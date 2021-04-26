@@ -60,5 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Pacient.sql" />
+    <Build Include="Tables\Asistenta.sql" />
+    <Build Include="Tables\Medic.sql" />
+    <Build Include="Tables\Robot.sql" />
+    <Build Include="Tables\Transport.sql" />
+    <Build Include="Tables\Tratament.sql" />
   </ItemGroup>
 </Project>
