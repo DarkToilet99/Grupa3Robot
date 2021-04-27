@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using WebApi.Context;
 
 namespace WebApi
 {
@@ -19,8 +21,16 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<GeneralContext>(options =>
+            {
+                                       //Serverul din MSSM(Microsoft SQL Server Management),Catalog = nume baza de data(ApiDatabase)
+                options.UseSqlServer($"Server=DESKTOP-8LPHQ8K\\SQLEXPRESS;Initial Catalog=ApiDatabase;MultipleActiveResultSets=true;Integrated Security=true;");
+            });
 
-            services.AddControllers();
+
+            services.AddControllers().AddNewtonsoftJson(options => 
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
