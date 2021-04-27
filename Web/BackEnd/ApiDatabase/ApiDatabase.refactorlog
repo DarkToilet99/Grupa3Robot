@@ -35,4 +35,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="AsistentaId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5660cf3e-cf10-4e18-a10e-7890c1de87ec" ChangeDateTime="04/27/2021 13:03:54">
+    <Property Name="ElementName" Value="[dbo].[Tratament].[CNP]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tratament]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CNPPacient" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="07847a17-7c14-4a58-9446-b1476e21e319" ChangeDateTime="04/27/2021 13:07:08">
+    <Property Name="ElementName" Value="[dbo].[Pacient].[CNP]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Pacient]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CNPPacient" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="24e5bd4d-aa14-4c7e-98d6-3f748b67d57d" ChangeDateTime="04/27/2021 13:28:30">
+    <Property Name="ElementName" Value="[dbo].[Pacient].[CNPPacient]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Pacient]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PacientCNP" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d5d1a205-4bc5-4e64-bf11-cbb7f4416a5e" ChangeDateTime="04/27/2021 13:31:46">
+    <Property Name="ElementName" Value="[dbo].[Tratament].[CNPPacient]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Tratament]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PacientCNP" />
+  </Operation>
 </Operations>

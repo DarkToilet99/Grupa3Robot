@@ -66,4 +66,7 @@
     <Build Include="Tables\Transport.sql" />
     <Build Include="Tables\Tratament.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ApiDatabase.refactorlog" />
+  </ItemGroup>
 </Project>
