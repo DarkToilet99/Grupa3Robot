@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi.csproj", "
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ApiDatabase", "..\ApiDatabase\ApiDatabase.sqlproj", "{BF7E9990-B022-4ADE-A3EF-1FD025529211}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationApi", "..\AuthenticationApi\AuthenticationApi.csproj", "{BBC7E8FF-C149-4DD1-9EB4-3A76453AD1EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{BF7E9990-B022-4ADE-A3EF-1FD025529211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF7E9990-B022-4ADE-A3EF-1FD025529211}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF7E9990-B022-4ADE-A3EF-1FD025529211}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BBC7E8FF-C149-4DD1-9EB4-3A76453AD1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC7E8FF-C149-4DD1-9EB4-3A76453AD1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC7E8FF-C149-4DD1-9EB4-3A76453AD1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC7E8FF-C149-4DD1-9EB4-3A76453AD1EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
