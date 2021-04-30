@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("medics")]
+    [Authorize]
     public class MedicController : ControllerBase
     {
         public readonly GeneralContext context;
