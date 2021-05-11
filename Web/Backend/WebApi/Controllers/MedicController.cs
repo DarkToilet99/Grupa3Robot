@@ -14,11 +14,11 @@ namespace WebApi.Controllers
     [ApiController]
     [Route("medics")]
     [Authorize]
-    public class MedicController : ControllerBase
+    public class MedicController : BazaController
     {
         public readonly GeneralContext context;
 
-        public MedicController(GeneralContext _context)
+        public MedicController(GeneralContext _context) : base(_context)
         {
             context = _context;
         }
@@ -44,6 +44,11 @@ namespace WebApi.Controllers
                 Parola = request.Parola
             };
             context.Medic.Add(medic);
+            //Creaza login pentru medic(folosit pentru token)
+            if(!await CreazaLogin(request.CodParafa.ToString(), request.Parola))
+            {
+                return BadRequest("Nu sa putut inregistra autentificarea! Exista deja un user cu acest username(cod parafa)!");
+            }
             await context.SaveChangesAsync();
 
             return Ok("Medicul a fost inregistrat");
@@ -60,6 +65,8 @@ namespace WebApi.Controllers
             {
                 return BadRequest("Nu exista un medic cu acest cod parafa!");
             }
+            //Sterge loginul(autentificare)
+            await StergeLogin(medic.CodParafa.ToString());
             context.Medic.Remove(medic);
             await context.SaveChangesAsync();
             return NoContent();
