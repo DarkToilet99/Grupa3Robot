@@ -10,6 +10,7 @@ namespace WebApi.Context
        public DbSet<Tratament> Tratament { get; set; }
        public DbSet<Robot> Robot { get; set; }
        public DbSet<Transport> Transport { get; set; }
+       public DbSet<User> User { get; set; }
 
         public GeneralContext(DbContextOptions<GeneralContext> options) : base(options) {
         
