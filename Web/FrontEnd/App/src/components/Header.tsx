@@ -1,12 +1,18 @@
 import { PageHeader } from 'antd';
 
-export const SiteHeader= () => {
+export interface HeaderProps{
+  headerVisible:boolean;
+}
+
+export const SiteHeader= ({headerVisible}:HeaderProps) => {
     return(
-  <PageHeader
+      <>
+      {headerVisible?(<PageHeader
   style={{marginLeft:"760px"}}
     className="site-page-header"
     title={<h1>Autentificare</h1>}
     
-  />
+  />):(<div></div>)}
+  </>
     );
 };
