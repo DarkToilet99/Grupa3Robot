@@ -7,12 +7,14 @@ export interface HeaderProps{
 export const SiteHeader= ({headerVisible}:HeaderProps) => {
     return(
       <>
-      {headerVisible?(<PageHeader
-  style={{marginLeft:"760px"}}
-    className="site-page-header"
-    title={<h1>Autentificare</h1>}
-    
-  />):(<div></div>)}
+      {headerVisible?(
+      <PageHeader
+          style={{marginLeft:"760px"}}
+          className="site-page-header"
+          title={<h1>Autentificare</h1>}
+        backIcon
+      />
+      ):(<div></div>)}
   </>
     );
 };

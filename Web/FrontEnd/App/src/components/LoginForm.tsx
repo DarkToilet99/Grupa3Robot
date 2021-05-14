@@ -3,13 +3,14 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 export interface LoginProps {
   navigateToPacienti:()=>void;
+  navigateToAutentificare:()=>void;
 }
 
-export const NormalLoginForm = ({navigateToPacienti}:LoginProps) => {
+export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare}:LoginProps) => {
   const onFinish = (values:any) => {
     console.log('Received values of form: ', values);
   };
-
+navigateToAutentificare();
   return (
     <Form
       name="normal_login"

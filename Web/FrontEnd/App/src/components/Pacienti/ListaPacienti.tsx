@@ -1,33 +1,30 @@
 import {List} from 'antd';
+import { Pacienti } from '../../common/common';
 import { ItemPacient } from './ItemList';
-export const ListaPacienti=()=>{
+
+export interface ListaPacientiProps{
+  data:Pacienti[];
+  navigateToIstoricPacienti:()=>void;
+}
+
+export const ListaPacienti=({data,navigateToIstoricPacienti}:ListaPacientiProps)=>{
   
-  const listData = [];
-for(let i=0;i<12;i++)
-{
-  listData.push({
-    title: `Pacient `,
-    description:
-      'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-    content:
-      'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-  });
-};
+
 
   return(
-  <List
-    itemLayout="vertical"
-    size="large"
-    pagination={{
-      onChange: page => {
-        console.log(page);
-      },
-      pageSize: 10,
-    }}
-    dataSource={listData}
-    renderItem={item => (      
-    <ItemPacient  item={item}></ItemPacient>
-    )}
-  />
+        <List
+          itemLayout="vertical"
+          size="large"
+          pagination={{
+            onChange: page => {
+               console.log(page);
+          },
+           pageSize: 10,
+           }}
+            dataSource={data}
+            renderItem={item => (      
+                <ItemPacient navigateToIstoricPacienti={navigateToIstoricPacienti} item={item}></ItemPacient>
+            )}
+       />
   );
 }
