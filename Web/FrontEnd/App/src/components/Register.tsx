@@ -1,18 +1,17 @@
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+export interface RegisterProps {
+    navigateToPacienti:()=>void;
+    
+    navigateToRegister:()=>void;
+  }
 
-export interface LoginProps {
-  navigateToPacienti:()=>void;
-  navigateToAutentificare:()=>void;
-  navigateToRegister:()=>void;
-}
-
-export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare,navigateToRegister}:LoginProps) => {
-  const onFinish = (values:any) => {
-    console.log('Received values of form: ', values);
-  };
-navigateToAutentificare();
-  return (
+  export const RegisterForm = ({navigateToPacienti,navigateToRegister}:RegisterProps) => {
+    const onFinish = (values:any) => {
+      console.log('Received values of form: ', values);
+    };
+navigateToRegister();
+return (
     <Form
       name="normal_login"
       className="login-form"
@@ -66,13 +65,10 @@ navigateToAutentificare();
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary"  className="login-form-button" onClick={()=>navigateToPacienti()}>
-          Log in
-        </Button>
-        <Button style={{marginLeft:"128px"}} onClick={()=>navigateToRegister()}>
+        <Button style={{marginLeft:"128px"}} onClick={()=>navigateToPacienti()}>
             Register
         </Button>
       </Form.Item>
     </Form>
   );
-};
+  };

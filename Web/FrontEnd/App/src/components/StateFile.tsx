@@ -5,7 +5,8 @@ export enum Screens {
     Loading,
     Autentificare,
     Pacienti,
-    IstoricPacient
+    IstoricPacient,
+    Register
   }
 
 export const useApp=()=>{
@@ -17,6 +18,11 @@ export const useApp=()=>{
 const navigateToPacienti =()=>{
     setHeaderVisible(false);
     setScreens(Screens.Pacienti);
+}
+
+const navigateToRegister=()=>{
+    setHeaderVisible(true);
+    setScreens(Screens.Register);
 }
 
 const navigateToAutentificare=()=>{
@@ -37,6 +43,7 @@ const DatePacienti=()=>{
             setSearchCriteria,
             DatePacienti,
             navigateToAutentificare,
+            navigateToRegister,
             navigateToIstoricPacient
         };
 
