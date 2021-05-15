@@ -13,7 +13,7 @@ export interface PacientiProps{
     navigateToIstoricPacienti:()=>void;
 }
 
-export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare,dataDoctori}:PacientiProps)=>{
+export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
 
     return(
@@ -30,7 +30,7 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare,dataD
 
         <Search  style={{marginLeft:"400px", width:"897px"}} placeholder={"Cauta pacientul dupa nume"} onChange={()=>(setSearchCriteria(""))} onSearch={(text)=>{setSearchCriteria(text)}}></Search>
 
-        <div style={{marginLeft:"400px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToAutentificare} data={data}></ListaPacienti></div>
+        <div style={{marginLeft:"400px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
         <AdaugarePacient setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
         </>

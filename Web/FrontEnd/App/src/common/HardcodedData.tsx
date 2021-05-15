@@ -1,4 +1,4 @@
-import { Pacienti } from "./common";
+import { Doctori, Pacienti, Transporturi } from "./common";
 
 export const mockedData:Pacienti[] =[
 {
@@ -51,7 +51,20 @@ export const mockedData:Pacienti[] =[
 },
 
 ]
-export const mockedDoctori =[
+export const mockedDoctori:Doctori[] =[
     {numeDoctor:"Piscot",
     CNP:1111}
+]
+
+export const mockedTransport:Transporturi[]=[
+    {dataTransport:"12 mai 2021",
+    medicament:"paracetamol"},
+    {dataTransport:"14 mai 2021",
+    medicament:"algocalmin"},
+    {dataTransport:"13 mai 2021",
+    medicament:"nospa"},
+    {dataTransport:"13 mai 2021",
+    medicament:"Triferment"},
+    {dataTransport:"13 mai 2021",
+    medicament:"DANONINO"}
 ]

@@ -1,9 +1,10 @@
 
 import React from 'react';
 import './App.css';
-import { mockedDoctori } from './common/HardcodedData';
+import { mockedDoctori, mockedTransport } from './common/HardcodedData';
 import { SiteHeader } from './components/Header';
 import { IstoricPacient } from './components/IstoricPacient/IstoricPacient';
+import { Loading } from './components/Loading';
 import { NormalLoginForm } from './components/LoginForm';
 import { Navigation } from './components/Navigation';
 import { PacientiPage } from './components/Pacienti/PacientiPage';
@@ -17,15 +18,12 @@ export const App= ()=>{
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
   <SiteHeader headerVisible={headerVisible} />
       <Navigation activeScreen={screens}>
+        <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
         <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} />
         </div>
-        <div>
         <PacientiPage navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
-       </div> 
-       <div>
-       <IstoricPacient></IstoricPacient>
-       </div>
+       <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
       </Navigation>
       </div>
   );

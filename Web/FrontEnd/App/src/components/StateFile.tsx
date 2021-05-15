@@ -2,13 +2,14 @@ import { useState } from "react"
 import { mockedData } from "../common/HardcodedData";
 
 export enum Screens {
+    Loading,
     Autentificare,
     Pacienti,
     IstoricPacient
   }
 
 export const useApp=()=>{
-    const [screens,setScreens]=useState<number>(0);
+    const [screens,setScreens]=useState<number>(Screens.Loading);
     const [headerVisible,setHeaderVisible]=useState<boolean>(true);
     const [searchCriteria,setSearchCriteria]=useState("");
 
