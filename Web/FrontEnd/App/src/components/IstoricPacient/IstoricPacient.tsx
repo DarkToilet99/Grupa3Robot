@@ -14,7 +14,7 @@ export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi}:I
     return(<div>
         <div style={{display:"flex"}}>
         <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].numeDoctor}</h1>
-        <Button size="large" style={{marginLeft:"1250px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
+        <Button size="large" style={{marginLeft:"1550px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
         </div>
         <div style={{display:"flex"}}>
         <DetaliiPacient></DetaliiPacient>

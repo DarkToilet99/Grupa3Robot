@@ -12,16 +12,15 @@ export const SiteHeader= ({headerVisible,headerTitle,navigateToAutentificare,bac
     return(
       <>
       {headerVisible?(
-        <>
-        {backButtonVisible?(<Button size="large" style={{marginLeft:"1600px"}} onClick={()=>{navigateToAutentificare()}}>🡸 Inapoi</Button>):(<div></div>)}
-      
+        <div style={{display:"flex"}}>
       <PageHeader
-          style={{marginLeft:"760px"}}
+          style={{marginLeft:"800px"}}
           className="site-page-header"
           title={<h1>{headerTitle}</h1>}
         backIcon
       />
-      </>
+      {backButtonVisible?(<Button size="large" style={{marginLeft:"750px", marginTop:"50px"}} onClick={()=>{navigateToAutentificare()}}>🡸 Inapoi</Button>):(<div></div>)}
+      </div>
       ):(<div></div>)}
   </>
     );

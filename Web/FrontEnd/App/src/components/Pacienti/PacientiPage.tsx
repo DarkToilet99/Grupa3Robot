@@ -20,19 +20,19 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
 
     return(
         <>
-        <div style={{display:"flex"}}>
+        <div style={{display:"flex", marginLeft:"100px"}}>
         <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].numeDoctor}</h1>
-        <Button size="large" style={{marginLeft:"1250px", marginTop:"30px"}} onClick={()=>{navigateToAutentificare()}}>Deconectare</Button>
+        <Button size="large" style={{marginLeft:"1450px", marginTop:"30px"}} onClick={()=>{navigateToAutentificare()}}>Deconectare</Button>
         </div>
-        <div style={{ display:"flex",marginLeft:"720px", marginTop:"120px", textDecorationLine:"underline" }}>
+        <div style={{ display:"flex",marginLeft:"820px", marginTop:"120px", textDecorationLine:"underline" }}>
         <h1>Lista Pacienti</h1>
             <Button style={{marginLeft:"200px", marginTop:"8px"}} onClick={()=>{setIsAddModalVisible(true)}}>Adaugare Pacient</Button>
         </div>
         
 
-        <Search  style={{marginLeft:"400px", width:"897px"}} placeholder={"Cauta pacientul dupa nume"} onChange={()=>(setSearchCriteria(""))} onSearch={(text)=>{setSearchCriteria(text)}}></Search>
+        <Search  style={{marginLeft:"500px", width:"897px"}} placeholder={"Cauta pacientul dupa nume"} onChange={()=>(setSearchCriteria(""))} onSearch={(text)=>{setSearchCriteria(text)}}></Search>
 
-        <div style={{marginLeft:"400px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
+        <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
         <AdaugarePacient setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
         <div style={{display:"flex"}}>

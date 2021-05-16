@@ -67,10 +67,10 @@ navigateToAutentificare();
 
       <Form.Item>
         <Button type="primary"  className="login-form-button" onClick={()=>navigateToPacienti()}>
-          Log in
+          Autentificare
         </Button>
         <Button style={{marginLeft:"128px"}} onClick={()=>navigateToRegister()}>
-            Register
+            Inregistrare
         </Button>
       </Form.Item>
     </Form>
