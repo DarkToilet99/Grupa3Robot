@@ -13,19 +13,31 @@ import {useApp} from './components/StateFile'
 
 
 export const App= ()=>{
-  const {screens,navigateToPacienti,headerVisible,setSearchCriteria, DatePacienti ,navigateToAutentificare,navigateToIstoricPacient,navigateToRegister }=useApp();
+  const {
+    screens,
+    navigateToPacienti,
+    headerVisible,
+    setSearchCriteria,
+    DatePacienti,
+    navigateToAutentificare,
+    navigateToIstoricPacient,
+    navigateToRegister,
+    headerTitle,
+    backButtonVisible }=useApp();
   console.log(screens)
   return (
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
-  <SiteHeader headerVisible={headerVisible} />
+  <SiteHeader backButtonVisible={backButtonVisible} navigateToPacienti={navigateToPacienti} headerTitle={headerTitle} headerVisible={headerVisible} />
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
-        <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToPacienti} />
+        <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
         </div>
         <PacientiPage navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
        <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
-       <RegisterForm navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToPacienti}></RegisterForm>
+       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
+       <RegisterForm navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister}></RegisterForm>
+       </div>
       </Navigation>
       </div>
   );

@@ -33,6 +33,14 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
         <div style={{marginLeft:"400px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
         <AdaugarePacient setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
+        <div style={{display:"flex"}}>
+        <div style={{display:"flex",marginTop:"40px"}}>
+        <h1 style={{marginLeft:"140px"}}>Alarme:</h1>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-Nici o alarma-</h1></div>
+        <div style={{display:"flex", marginTop:"40px"}}>
+        <h1 style={{marginLeft:"840px"}}>Stare Robot:</h1>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}}>-Online-</h1></div>
+        </div>
         </>
     );
 }

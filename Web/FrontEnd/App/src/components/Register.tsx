@@ -12,6 +12,7 @@ export interface RegisterProps {
     };
 navigateToRegister();
 return (
+  <>
     <Form
       name="normal_login"
       className="login-form"
@@ -65,10 +66,11 @@ return (
       </Form.Item>
 
       <Form.Item>
-        <Button style={{marginLeft:"128px"}} onClick={()=>navigateToPacienti()}>
-            Register
+        <Button type="primary" style={{marginLeft:"130px"}} onClick={()=>navigateToPacienti()}>
+            Inregistreaza-te
         </Button>
       </Form.Item>
     </Form>
+    </>
   );
   };
