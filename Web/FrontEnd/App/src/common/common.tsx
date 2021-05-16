@@ -11,3 +11,7 @@ export interface Transporturi{
     dataTransport:string;
     medicament:string;
 }
+export interface StareRobot{
+    stareRobot:string;
+    alarma:string;
+}

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import './App.css';
-import { mockedDoctori, mockedTransport } from './common/HardcodedData';
+import { mockedDoctori, mockedTransport, stareRobotMocked } from './common/HardcodedData';
 import { SiteHeader } from './components/Header';
 import { IstoricPacient } from './components/IstoricPacient/IstoricPacient';
 import { Loading } from './components/Loading';
@@ -27,13 +27,13 @@ export const App= ()=>{
   console.log(screens)
   return (
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
-  <SiteHeader backButtonVisible={backButtonVisible} navigateToPacienti={navigateToPacienti} headerTitle={headerTitle} headerVisible={headerVisible} />
+  <SiteHeader backButtonVisible={backButtonVisible} navigateToAutentificare={navigateToAutentificare} headerTitle={headerTitle} headerVisible={headerVisible} />
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
         <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
         </div>
-        <PacientiPage navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
+        <PacientiPage stareRobot={stareRobotMocked[0].stareRobot} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
        <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
        <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
        <RegisterForm navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister}></RegisterForm>

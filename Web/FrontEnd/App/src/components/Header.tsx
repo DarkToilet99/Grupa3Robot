@@ -4,16 +4,16 @@ import React from 'react';
 export interface HeaderProps{
   headerVisible:boolean;
   headerTitle:string;
-  navigateToPacienti:()=>void;
+  navigateToAutentificare:()=>void;
   backButtonVisible:boolean;
 }
 
-export const SiteHeader= ({headerVisible,headerTitle,navigateToPacienti,backButtonVisible}:HeaderProps) => {
+export const SiteHeader= ({headerVisible,headerTitle,navigateToAutentificare,backButtonVisible}:HeaderProps) => {
     return(
       <>
       {headerVisible?(
         <>
-        {backButtonVisible?(<Button size="large" style={{marginLeft:"1600px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>):(<div></div>)}
+        {backButtonVisible?(<Button size="large" style={{marginLeft:"1600px"}} onClick={()=>{navigateToAutentificare()}}>🡸 Inapoi</Button>):(<div></div>)}
       
       <PageHeader
           style={{marginLeft:"760px"}}

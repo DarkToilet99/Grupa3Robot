@@ -1,7 +1,8 @@
 import { Button } from "antd"
 import Search from "antd/lib/input/Search";
 import React, { useState } from "react";
-import { Doctori, Pacienti } from "../../common/common";
+import { Doctori, Pacienti, StareRobot } from "../../common/common";
+import { stareRobotMocked } from "../../common/HardcodedData";
 import { AdaugarePacient } from "./AdaugarePacient";
 import { ListaPacienti } from "./ListaPacienti";
 
@@ -11,9 +12,10 @@ export interface PacientiProps{
     navigateToAutentificare:()=>void;
     dataDoctori:Doctori[];
     navigateToIstoricPacienti:()=>void;
+    stareRobot:string;
 }
 
-export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori}:PacientiProps)=>{
+export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
 
     return(
@@ -36,10 +38,10 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
         <div style={{display:"flex"}}>
         <div style={{display:"flex",marginTop:"40px"}}>
         <h1 style={{marginLeft:"140px"}}>Alarme:</h1>
-        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-Nici o alarma-</h1></div>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-{stareRobotMocked[0].alarma}-</h1></div>
         <div style={{display:"flex", marginTop:"40px"}}>
         <h1 style={{marginLeft:"840px"}}>Stare Robot:</h1>
-        <h1 style={{marginLeft:"20px", border:"1px solid black"}}>-Online-</h1></div>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}}>-{stareRobot}-</h1></div>
         </div>
         </>
     );

@@ -1,4 +1,4 @@
-import { Doctori, Pacienti, Transporturi } from "./common";
+import { Doctori, Pacienti, StareRobot, Transporturi } from "./common";
 
 export const mockedData:Pacienti[] =[
 {
@@ -67,4 +67,10 @@ export const mockedTransport:Transporturi[]=[
     medicament:"Triferment"},
     {dataTransport:"13 mai 2021",
     medicament:"DANONINO"}
+]
+export const stareRobotMocked:StareRobot[]=[
+    {
+        stareRobot:"Online",
+        alarma:"O alarma noua!"
+    }
 ]
