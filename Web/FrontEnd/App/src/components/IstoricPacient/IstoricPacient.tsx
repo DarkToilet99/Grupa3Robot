@@ -13,7 +13,7 @@ export interface IstoricPacientProps{
 export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi}:IstoricPacientProps)=>{
     return(<div>
         <div style={{display:"flex"}}>
-        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].numeDoctor}</h1>
+        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].Nume}</h1>
         <Button size="large" style={{marginLeft:"1550px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
         </div>
         <div style={{display:"flex"}}>

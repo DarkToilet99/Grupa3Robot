@@ -1,17 +1,40 @@
 export interface Pacienti {
-    numePacient:string;
-    sectiePacient:string;
+    PacientCNP:number;
+    Nume:string;
+    Prenume:string;
+    Varsta:number;
+    Telefon:number;
+    Email:string;
+    Profesie:string;
+    LocDeMunca:string;
+    Sex:boolean;
 }
 
 export interface Doctori {
-    numeDoctor:string;
-    CNP:number;
+    Nume:string;
+    Prenume:string;
+    CodParafa:number;
+    Parola:number;
+
 }
 export interface Transporturi{
-    dataTransport:string;
-    medicament:string;
+    Data:string;
+    Efectuat:boolean;
 }
 export interface StareRobot{
-    stareRobot:string;
-    alarma:string;
+    Ocupat:string;
+}
+
+export interface Asistenta {
+    Nume:string;
+    Prenume:string;
+    Parola:number;
+    NumeUtilizator:string;
+}
+
+export interface Tratament {
+    PacientCNP:number;
+    Medicament:string;
+    Pat:number;
+    Diagnostic:string;
 }
