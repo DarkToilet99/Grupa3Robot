@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="PostDeployScripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Pacient.sql" />
@@ -66,5 +67,8 @@
     <Build Include="Tables\Robot.sql" />
     <Build Include="Tables\Transport.sql" />
     <Build Include="Tables\Tratament.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeployScripts\PostDeployment.sql" />
   </ItemGroup>
 </Project>

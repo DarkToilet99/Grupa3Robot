@@ -21,11 +21,12 @@ namespace AuthenticationApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
 
             services.AddDbContext<AuthContext>(options =>
             {
                 //Serverul din MSSM(Microsoft SQL Server Management),Catalog = nume baza de data(ApiDatabase)
-                options.UseSqlServer($"Server=DESKTOP-8LPHQ8K\\SQLEXPRESS;Initial Catalog=ApiDatabase;MultipleActiveResultSets=true;Integrated Security=true;");
+                options.UseSqlServer($"Server=POPUSHKA;Initial Catalog=ApiDatabase;MultipleActiveResultSets=true;Integrated Security=true;");
             });
 
             services.AddControllers();
@@ -38,6 +39,7 @@ namespace AuthenticationApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(o => o.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

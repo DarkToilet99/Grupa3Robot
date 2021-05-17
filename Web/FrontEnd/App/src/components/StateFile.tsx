@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { mockedData } from "../common/HardcodedData";
+import axios from 'axios';
+import { Doctori } from "../common/common";
 
 export enum Screens {
     Loading,
@@ -15,9 +17,30 @@ export const useApp=()=>{
     const [searchCriteria,setSearchCriteria]=useState("");
     const [headerTitle,setHeaderTitle]=useState("");
     const [backButtonVisible,setBackButtonVisible]=useState(false)
+    const [bearerToken,setBearerToken]=useState("")
 
+
+
+const autentificare=()=>{
+
+    axios
+    .post<string>("https://localhost:44344/auth",  
+        {Username:"admin",
+         Password:"admin"}
+       ,{
+        headers: {
+            "Content-Type": "application/json"
+          }
+    }
+    )
+    .then(raspuns=>{setBearerToken(raspuns.toString())
+            console.log(raspuns.data)})
+    .catch(e=>console.log(e))
+    
+}
 
 const navigateToPacienti =()=>{
+    autentificare();
     setHeaderVisible(false);
     setScreens(Screens.Pacienti);
     setBackButtonVisible(false);

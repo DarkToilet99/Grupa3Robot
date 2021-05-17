@@ -15,6 +15,7 @@ namespace WebApi.Controllers
         {
             this.context = _context;
         }
+        [ApiExplorerSettings(IgnoreApi =true)]
         public async Task<bool> CreazaLogin(String username, String parola)
         {
             User user = await context.User.Where(u => u.Username.Equals(username)).FirstOrDefaultAsync();
@@ -31,6 +32,7 @@ namespace WebApi.Controllers
             await context.SaveChangesAsync();
             return true;
         }
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<bool> StergeLogin(String username)
         {
             User user = await context.User.Where(u => u.Username.Equals(username)).FirstOrDefaultAsync();
