@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Selectaremodcontrol">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Label Text="Selectare mod control" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Grid HeightRequest="50"></Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+               
+                <CheckBox x:Name="controlmanual" Grid.Row="0" Grid.Column="1"  />
+            <Label Text="Control manual"  FontSize="Large" TextColor="SlateGray" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" > </Label>
+            </Grid>
+            <Grid HeightRequest="25"></Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="controlautomat" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Control automat" FontSize="Large"  TextColor="SlateGray" Grid.Row="0" Grid.Column="0" FontAttributes="Bold"  ></Label>
+            </Grid>
+           
+            <Grid HeightRequest="25"></Grid>
+            <Button Text="Validare" Clicked="Button_Validare" Background="SlateGray" Margin="15"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

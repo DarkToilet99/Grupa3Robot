@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Controlmanual">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Label Text="Control manual" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Grid HeightRequest="50"></Grid>
+
+            <Grid x:Name="mainGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                
+                    <Button Text="fata" Clicked="Button_in_fata" Background="Pink"   Grid.Row="0" Grid.Column="1"></Button>
+                    <Button Text="spate" Clicked="Button_spate" Background="Gray" Grid.Row="2" Grid.Column="1"></Button>
+                    <Button Text="Stanga" Clicked="Button_stanga" Background="Black"  Grid.Row="1" Grid.Column="0"></Button>
+                    <Button Text="Dreapta" Clicked="Button_dreapta" Background="Blue"  Grid.Row="1" Grid.Column="2"></Button>
+                
+            </Grid>
+            <Grid HeightRequest="15"></Grid>
+  
+            <Button Text="OK" Clicked="Button_OK" Background="Green" Margin="15"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

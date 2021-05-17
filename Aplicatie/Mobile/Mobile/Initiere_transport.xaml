@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Initiere_transport">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Label Text="Initiere transport" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Grid HeightRequest="25"></Grid>
+            <Label Text="Numar transport" TextColor="SlateGray" ></Label>
+            <Entry x:Name="Entry_Numartransport" Placeholder="Numar transport" ></Entry>
+            <Label Text="Medicament" TextColor="SlateGray" ></Label>
+            <Entry x:Name="Entry_Medicament" Placeholder="Medicament" ></Entry>
+            <Label Text="Pacient" TextColor="SlateGray" ></Label>
+            <Entry x:Name="Entry_Pacient" Placeholder="Pacient" ></Entry>
+            <Button Text="Efectuare transport" Clicked="Button_Efectuare_transport" Background="SlateGray" Margin="15"></Button>
+       
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Page1">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Grid HeightRequest="40"></Grid>
+            <Label x:Name="Label_Nume" Text="Nume" FontAttributes="Bold" TextColor="SlateGray" />
+            <Entry x:Name="Entry_Nume" Placeholder="Nume" ></Entry>
+            <Label x:Name="Label_Prenume" Text="Prenume" FontAttributes="Bold" TextColor="SlateGray" />
+            <Entry x:Name="Entry_Prenume" Placeholder="Prenume" ></Entry>
+            <Grid HeightRequest="15"></Grid>
+            <Label x:Name="Label_NumeUtilizator" Text="Nume Utilizator" FontAttributes="Bold"  TextColor="SlateGray"/>
+            <Entry x:Name="Entry_NumeUtilizator" Placeholder="Nume Utilizator" TextColor="SlateGray" ></Entry>
+            <Label x:Name="Label_Parola" Text="Parola" FontAttributes="Bold" TextColor="SlateGray" ></Label>
+            <Entry  IsPassword="True" x:Name="Entry_Parola" Placeholder="Parola"  ></Entry>
+            <Grid HeightRequest="40"></Grid>
+            
+            <Grid HeightRequest="5"></Grid>
+            <Button Text="Inregistrare" Clicked="Button_Inregistrare" Background="SlateGray" Margin="15"></Button>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

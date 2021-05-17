@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Page2">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Label Text="Meniu principal" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Grid HeightRequest="50"></Grid>
+       
+            
+            <Button Text="Initiere transport" Clicked="Button_Initiere_transport" Background="SlateGray" Margin="15" ></Button>
+            
+            <Button Text="Selectare mod control" Clicked="Button_Selectare_mod_control" Background="SlateGray" Margin="15" ></Button>
+       
+
+            <Button Text="Rapoarte" Clicked="Button_Rapoarte" Background="SlateGray" Margin="15"  ></Button>
+            <Button Text="Deconectare" Clicked="Button_Deconectare" Background="SlateGray" Margin="15"  ></Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
