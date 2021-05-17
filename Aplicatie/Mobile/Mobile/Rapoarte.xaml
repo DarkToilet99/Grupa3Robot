@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Rapoarte">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="PaleTurquoise">
+            <Grid HeightRequest="50"></Grid>
+            <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            <Label Text="Rapoarte" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+            
+            <Grid HeightRequest="25"></Grid>
+            <Label Text="Transport" TextColor="SlateGray" ></Label>
+            <Entry x:Name="Entry_TransportRaport" Placeholder="Transport" ></Entry>
+            <Button Text="Detalii transport" Clicked="Button_Detalii_transport" Background="SlateGray" Margin="15"></Button>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

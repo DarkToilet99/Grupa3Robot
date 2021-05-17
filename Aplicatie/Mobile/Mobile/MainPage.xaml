@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.MainPage">
+
+    <StackLayout BackgroundColor="PaleTurquoise">
+        <Grid HeightRequest="50"></Grid>
+        <Label Text="MEDICARE" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold" TextColor="SlateGray"></Label >
+        <Grid HeightRequest="50"></Grid>
+        <Label x:Name="Label_NumeUtilizator" Text="Nume Utilizator" FontAttributes="Bold" TextColor="SlateGray"/>
+        <Entry x:Name="Entry_NumeUtilizator" Placeholder="Nume Utilizator" TextColor="SlateGray" ></Entry>
+        <Grid HeightRequest="15"></Grid>
+        <Label x:Name="Label_Parola" Text="Parola" FontAttributes="Bold" TextColor="SlateGray">
+            </Label>
+        <Entry  IsPassword="True" x:Name="Entry_Parola" Placeholder="Parola" TextColor="SlateGray"></Entry>
+        <Grid HeightRequest="40"></Grid>
+        <Button Text="Autentificare" Clicked="Button_Autentificare" Background="SlateGray" Margin="25"  ></Button>
+        <Button Text="Inregistrare" Clicked="Button_Inregistrare" Background="SlateGray" Margin="25"></Button>
+    </StackLayout> 
+
+</ContentPage>
