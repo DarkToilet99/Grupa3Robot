@@ -33,7 +33,7 @@ export const App= ()=>{
       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
         <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
         </div>
-        <PacientiPage stareRobot={stareRobotMocked[0].stareRobot} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
+        <PacientiPage stareRobot={stareRobotMocked[0].Ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
        <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
        <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
        <RegisterForm navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister}></RegisterForm>

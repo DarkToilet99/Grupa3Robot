@@ -21,7 +21,7 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
     return(
         <>
         <div style={{display:"flex", marginLeft:"100px"}}>
-        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].numeDoctor}</h1>
+        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].Nume}</h1>
         <Button size="large" style={{marginLeft:"1450px", marginTop:"30px"}} onClick={()=>{navigateToAutentificare()}}>Deconectare</Button>
         </div>
         <div style={{ display:"flex",marginLeft:"820px", marginTop:"120px", textDecorationLine:"underline" }}>
@@ -38,7 +38,7 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
         <div style={{display:"flex"}}>
         <div style={{display:"flex",marginTop:"40px"}}>
         <h1 style={{marginLeft:"140px"}}>Alarme:</h1>
-        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-{stareRobotMocked[0].alarma}-</h1></div>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-{stareRobotMocked[0].Ocupat}-</h1></div>
         <div style={{display:"flex", marginTop:"40px"}}>
         <h1 style={{marginLeft:"840px"}}>Stare Robot:</h1>
         <h1 style={{marginLeft:"20px", border:"1px solid black"}}>-{stareRobot}-</h1></div>

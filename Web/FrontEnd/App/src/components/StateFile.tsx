@@ -65,7 +65,7 @@ const navigateToIstoricPacient=()=>{
 }
 const DatePacienti=()=>{
     console.log(searchCriteria)
-    return mockedData.filter((_) => _.numePacient.includes(searchCriteria));
+    return mockedData.filter((_) => _.Nume.includes(searchCriteria));
 }
 
     return {screens,
