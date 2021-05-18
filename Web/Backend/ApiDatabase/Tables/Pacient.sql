@@ -9,5 +9,8 @@
     [Profesie] NVARCHAR(30) NOT NULL, 
     [LocDeMunca] NVARCHAR(50) NOT NULL, 
     [Sex] BIT NOT NULL, 
-    CONSTRAINT [PK_Pacient_CNP] PRIMARY KEY ([PacientCNP])
+    [MedicId] INT NOT NULL, 
+    [PacientId] INT NOT NULL IDENTITY(1,1), 
+    CONSTRAINT [FK_Pacient_MedicId] FOREIGN KEY ([MedicId]) REFERENCES [Medic]([MedicId]), 
+    CONSTRAINT [PK_PacientId] PRIMARY KEY ([PacientId])
 )

@@ -14,6 +14,6 @@ namespace WebApi.Models
         public int CodParafa { get; set; }
         public string Parola { get; set; }
 
-        public ICollection<Pacient> Tratamente { get; set; } = new List<Pacient>();
+        public ICollection<Pacient> Pacients { get; set; } = new List<Pacient>();
     }
 }

@@ -33,8 +33,6 @@ namespace WebApi.Requests.PacientRequests
         public string LocDeMunca { get; set; }
         [Required]
         public bool Sex { get; set; }
-        [Required]
-        public ICollection<Tratament> Tratamente { get; set; } = new List<Tratament>();
     }
 }
 

@@ -8,6 +8,7 @@ namespace WebApi.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int TratamentId { get; set; }
+        public int PacientId { get; set; }
         public Pacient Pacient { get; set; }
         public string Medicament { get; set; }
         public int Pat { get; set; }

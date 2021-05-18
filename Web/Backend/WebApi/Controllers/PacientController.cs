@@ -23,22 +23,28 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> TestPacient(CreatePacientRequest request)
         {
-           
-            Pacient pacient = new Pacient()
+            await context.Medic.Where(m => m.CodParafa == request.MedicId).LoadAsync();
+            Medic medic = await context.Medic.Where(m => m.CodParafa == request.MedicId).Include(m=>m.Pacients).FirstOrDefaultAsync();
+            if(medic == null)
+            {
+                return BadRequest();
+            }
+
+            medic.Pacients.Add(new Pacient()
             {
                 Nume = request.Nume,
                 Prenume = request.Prenume,
-                PacientCNP=request.PacientCNP,
-                Profesie=request.Profesie,
-                Sex=request.Sex,
-                Telefon=request.Telefon,
-                Varsta=request.Varsta,
-                Email=request.Email,
-                LocDeMunca=request.LocDeMunca,
-                Tratamente=request.Tratamente
+                PacientCNP = request.PacientCNP,
+                Profesie = request.Profesie,
+                Sex = request.Sex,
+                Telefon = request.Telefon,
+                Varsta = request.Varsta,
+                Email = request.Email,
+                LocDeMunca = request.LocDeMunca,
+                MedicId = medic.MedicId
+            });
 
-            };
-            context.Pacient.Add(pacient);
+
             await context.SaveChangesAsync();
 
             return Ok("Pacientul a fost adaugat");

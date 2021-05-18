@@ -71,4 +71,7 @@
   <ItemGroup>
     <PostDeploy Include="PostDeployScripts\PostDeployment.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ApiDatabase.refactorlog" />
+  </ItemGroup>
 </Project>

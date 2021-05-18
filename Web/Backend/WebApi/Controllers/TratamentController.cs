@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Context;
 using WebApi.Models;
+using WebApi.Requests.TratamentRequests;
 
 namespace WebApi.Controllers
 {
@@ -20,17 +21,23 @@ namespace WebApi.Controllers
             this.context = context;
         }
         [HttpPost]
-        public async Task<IActionResult> TestTratament()
+        public async Task<IActionResult> TestTratament(CreateTratamentRequest request)
         {
-            await context.Pacient.Where(p => p.PacientCNP == 13213141).Include(p => p.Tratamente).FirstOrDefaultAsync();
-            Pacient pacient = context.Pacient.Where(p => p.PacientCNP == 13213141).FirstOrDefault();
-            Tratament tratament = new Tratament()
+            await context.Pacient.Where(p => p.PacientCNP == request.PacientCNP).Include(p => p.Tratamente).FirstOrDefaultAsync();
+            Pacient pacient = context.Pacient.Where(p => p.PacientCNP == request.PacientCNP).FirstOrDefault();
+            if(pacient == null)
             {
-                Diagnostic = "s",
-                Medicament = "s",
-                Pat = 1,
-            };
-            pacient.Tratamente.Add(tratament);
+                return BadRequest();
+            }
+            pacient.Tratamente.Add(new Tratament() 
+            { 
+                Diagnostic = request.Diagnostic,
+                Medicament = request.Medicament,
+                Pat = request.Pat,
+                PacientId = pacient.PacientId,
+            });
+
+
             await context.SaveChangesAsync();
             return Ok();
             
