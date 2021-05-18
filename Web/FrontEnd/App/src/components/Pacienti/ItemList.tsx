@@ -28,8 +28,7 @@ const [isModalVisible,setIsModalVisible]=useState(false)
             {/* <text style={{marginLeft:"0px"}}>{item.sectiePacient}</text> */}
             </div>
             <div style={{display:"flex", alignItems:"end", justifyContent:"space-between"}}>
-            <Button style={{marginLeft:"670px"}} onClick={()=>{navigateToIstoricPacienti()
-            console.log("am intrat")}} >Vizualizare</Button>
+            <Button style={{marginLeft:"670px"}} onClick={()=>{navigateToIstoricPacienti()}} >Vizualizare</Button>
             <Button onClick={()=>{setIsModalVisible(true)}}>Eliminare</Button>
             <ModalStergerePacient setIsModalVisible={setIsModalVisible} isModalVisible={isModalVisible}></ModalStergerePacient>
             </div>

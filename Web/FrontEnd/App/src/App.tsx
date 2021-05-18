@@ -23,20 +23,21 @@ export const App= ()=>{
     navigateToIstoricPacient,
     navigateToRegister,
     headerTitle,
-    backButtonVisible }=useApp();
-  console.log(screens)
+    backButtonVisible,
+    setInregMedic,
+    bearerToken }=useApp();
   return (
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
   <SiteHeader backButtonVisible={backButtonVisible} navigateToAutentificare={navigateToAutentificare} headerTitle={headerTitle} headerVisible={headerVisible} />
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
-      <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
-        <NormalLoginForm navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
+      <div style={{ marginLeft:"750px",width:"400px",marginTop:"200px"}}>
+        <NormalLoginForm setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
         </div>
-        <PacientiPage stareRobot={stareRobotMocked[0].Ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
+        <PacientiPage bearerToken={bearerToken} stareRobot={stareRobotMocked[0].Ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
        <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
-       <div style={{marginRight:"700px", marginLeft:"750px",marginTop:"200px"}}>
-       <RegisterForm navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister}></RegisterForm>
+       <div style={{width:"400px", marginLeft:"750px",marginTop:"200px"}}>
+       <RegisterForm  navigateToPacienti={navigateToPacienti} ></RegisterForm>
        </div>
       </Navigation>
       </div>

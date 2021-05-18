@@ -13,9 +13,10 @@ export interface PacientiProps{
     dataDoctori:Doctori[];
     navigateToIstoricPacienti:()=>void;
     stareRobot:string;
+    bearerToken:string;
 }
 
-export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot}:PacientiProps)=>{
+export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot,bearerToken}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
 
     return(
@@ -34,7 +35,7 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
 
         <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
-        <AdaugarePacient setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
+        <AdaugarePacient bearerToken={bearerToken} setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
         <div style={{display:"flex"}}>
         <div style={{display:"flex",marginTop:"40px"}}>
         <h1 style={{marginLeft:"140px"}}>Alarme:</h1>

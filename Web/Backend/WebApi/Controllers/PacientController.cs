@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Context;
 using WebApi.Models;
+using WebApi.Requests.PacientRequests;
 
 namespace WebApi.Controllers
 {
@@ -20,30 +21,47 @@ namespace WebApi.Controllers
             this.context = context;
         }
         [HttpPost]
-        public async Task<IActionResult> TestPacient()
+        public async Task<IActionResult> TestPacient(CreatePacientRequest request)
         {
+           
             Pacient pacient = new Pacient()
             {
-                PacientCNP = 13213141,
-                Nume = "test",
-                Prenume = "test",
-                Email = "a",
-                LocDeMunca = "a",
-                Profesie = "a",
-                Sex = true,
-                Telefon = 1,
-                Varsta = 1
+                Nume = request.Nume,
+                Prenume = request.Prenume,
+                PacientCNP=request.PacientCNP,
+                Profesie=request.Profesie,
+                Sex=request.Sex,
+                Telefon=request.Telefon,
+                Varsta=request.Varsta,
+                Email=request.Email,
+                LocDeMunca=request.LocDeMunca,
+                Tratamente=request.Tratamente
+
             };
             context.Pacient.Add(pacient);
             await context.SaveChangesAsync();
-            return Ok(pacient);
+
+            return Ok("Pacientul a fost adaugat");
         }
         [HttpGet]
-        public async Task<IActionResult> GetPacient()
+        public async Task<IActionResult> GetPacient([FromQuery] int pacientCNP)
         {
-            Pacient pacient = await context.Pacient.Where(p => p.PacientCNP == 13213141).Include(p=>p.Tratamente).FirstOrDefaultAsync();
+            Pacient pacient = await context.Pacient.Where(p => p.PacientCNP == pacientCNP).Include(p=>p.Tratamente).FirstOrDefaultAsync();
             return Ok(pacient);
         }
-        
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteMedic(DeletePacientRequest request)
+        {
+           
+            Pacient pacient = await context.Pacient.Where(m => m.PacientCNP.Equals(request.PacientCNP)).FirstOrDefaultAsync();
+            if (pacient == null)
+            {
+                return BadRequest("Nu exista un medic cu acest cod parafa!");
+            }
+            context.Pacient.Remove(pacient);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }

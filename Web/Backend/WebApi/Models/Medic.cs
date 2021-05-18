@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Models
@@ -13,6 +14,6 @@ namespace WebApi.Models
         public int CodParafa { get; set; }
         public string Parola { get; set; }
 
-
+        public ICollection<Pacient> Tratamente { get; set; } = new List<Pacient>();
     }
 }

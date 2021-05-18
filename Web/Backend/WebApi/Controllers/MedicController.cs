@@ -24,12 +24,27 @@ namespace WebApi.Controllers
         }
 
     [HttpGet]
-    public async Task<IActionResult> GetMedics()
+        [AllowAnonymous]
+        public async Task<IActionResult> GetMedics([FromQueryAttribute] string codParafa)
     {
+            
+            var medic = await context.Medic.Where(u=>u.CodParafa.Equals(codParafa)).FirstOrDefaultAsync();
+            if (medic == null)
+                return BadRequest("medicul nu exista");
+            return Ok(medic);
+    }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("/medics/all")]
+        public async Task<IActionResult> GetAllMedics()
+        {
             var medics = await context.Medic.ToListAsync();
             return Ok(medics);
-    }
+        }
+
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateMedic(CreateMedicRequest request)
         {
             if (await context.Medic.Where(m => m.CodParafa == request.CodParafa).AnyAsync())

@@ -14,7 +14,7 @@ export const ItemTransport=({item}:ItemTransportProps)=>{
           </div>   
             <div style={{marginLeft:"350px",display:"flex",alignItems:"right",justifyContent:"right"}}>
 
-            {/* <text>Medicament:{item.medicament}</text>  */}
+            <text>Efectuat:{item.Efectuat}</text> 
             </div>
         </div>
     );

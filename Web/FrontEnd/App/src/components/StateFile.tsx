@@ -18,6 +18,7 @@ export const useApp=()=>{
     const [headerTitle,setHeaderTitle]=useState("");
     const [backButtonVisible,setBackButtonVisible]=useState(false)
     const [bearerToken,setBearerToken]=useState("")
+    const [inregMedic,setInregMedic]=useState("");
 
 
 
@@ -33,14 +34,22 @@ const autentificare=()=>{
           }
     }
     )
-    .then(raspuns=>{setBearerToken(raspuns.toString())
-            console.log(raspuns.data)})
+    .then(raspuns=>{
+        setBearerToken(raspuns.data.toString())
+            axios
+            .get<Doctori>("https://localhost:44327/medics",
+            {params:{codParafa:inregMedic},
+                headers:{'Authorization': 'Bearer ' + raspuns.data}
+        })
+    })
     .catch(e=>console.log(e))
     
+        
 }
 
+
 const navigateToPacienti =()=>{
-    autentificare();
+autentificare()
     setHeaderVisible(false);
     setScreens(Screens.Pacienti);
     setBackButtonVisible(false);
@@ -77,7 +86,9 @@ const DatePacienti=()=>{
             navigateToRegister,
             navigateToIstoricPacient,
             headerTitle,
-            backButtonVisible
+            backButtonVisible,
+            setInregMedic,
+            bearerToken
         };
 
   }

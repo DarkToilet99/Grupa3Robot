@@ -1,13 +1,15 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Popover } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React from 'react';
 
 export interface LoginProps {
   navigateToPacienti:()=>void;
   navigateToAutentificare:()=>void;
   navigateToRegister:()=>void;
+  setInregMedic:(codParafa:string)=>void;
 }
 
-export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare,navigateToRegister}:LoginProps) => {
+export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare,navigateToRegister,setInregMedic}:LoginProps) => {
   const onFinish = (values:any) => {
     console.log('Received values of form: ', values);
   };
@@ -30,7 +32,10 @@ navigateToAutentificare();
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume Utilizator" />
+        <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
+          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume Utilizator" />
+        </Popover>
+        
       </Form.Item>
       <Form.Item
         name="password"
@@ -41,12 +46,14 @@ navigateToAutentificare();
           },
         ]}
       >
+        <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
         <Input
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
           type="password"
           placeholder="Parola"
         />
+        </Popover>
       </Form.Item>
       <Form.Item
         name="cod_parafa"
@@ -57,12 +64,15 @@ navigateToAutentificare();
           },
         ]}
       >
+        <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
         <Input
+        onPressEnter={(a)=>{console.log(a.currentTarget.defaultValue);setInregMedic(a.currentTarget.defaultValue)}}
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
           type="cod_parafa"
           placeholder="Cod Parafa"
         />
+        </Popover>
       </Form.Item>
 
       <Form.Item>
