@@ -2,43 +2,71 @@ import { Input, Modal} from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Pacienti } from '../../common/common';
+import { Pacienti, Tratament } from '../../common/common';
 
 export interface ModalAdaugarePacientProps
 {
     setIsModalVisible:(isModalVisible:boolean)=>void;
     isModalVisible:boolean;
     bearerToken:string;
+    inregMedic:number;
+    detaliiPacienti:Pacienti;
 }
 
-export const AdaugarePacient = ({isModalVisible,setIsModalVisible,bearerToken}:ModalAdaugarePacientProps) => {
+export const AdaugarePacient = ({isModalVisible,setIsModalVisible,bearerToken, inregMedic,detaliiPacienti}:ModalAdaugarePacientProps) => {
 
 
 
-  const [detaliiPacient,setDetaliiPacient]=useState<Pacienti>({Nume:"",Prenume:"",PacientCNP:0,Varsta:0,Sex:true,Telefon:0,Profesie:"",LocDeMunca:"0",Email:""})
-let detalii={Nume:"",Prenume:"",PacientCNP:0,Varsta:0,Sex:true,Telefon:0,Profesie:"",LocDeMunca:"0",Email:""};
+ 
+let detalii={nume:"",prenume:"",pacientCNP:0,varsta:0,sex:true,telefon:0,profesie:"",locDeMunca:"0",email:"",tratamente:{pacientId:0,diagnostic:"",pat:0,medicament:""}};
 const adaugarePacient=()=>{
     axios
-    .post<Pacienti>("https://localhost:44327/pacients",  
-        {detaliiPacient}
+    .post("https://localhost:44327/pacients",  
+        {MedicId:inregMedic,
+        Nume:detalii.nume,
+        Prenume:detalii.prenume,
+        PacientCNP:detalii.pacientCNP,
+        Varsta:detalii.varsta,
+        Telefon:detalii.telefon,
+        Email:detalii.email,
+        Profesie:detalii.profesie,
+        LocDeMunca:detalii.locDeMunca,
+        Sex:detalii.sex}
        ,{
         headers: {
             "Content-Type": "application/json",
-            'Authorization': 'Bearer ' + bearerToken
+            
+            // 'Authorization': 'Bearer ' + bearerToken
         
           }
     }
     )
     .then(raspuns=>{
-            console.log(raspuns.data)})
+      axios
+      .post<Tratament>("https://localhost:44327/pacient",
+      {
+        PacientId:detaliiPacienti.pacientId,
+        PacientCNP:detalii.pacientCNP,
+        Medicament:detalii.tratamente.medicament,
+        Pat:detalii.tratamente.pat,
+        Diagnostic:detalii.tratamente.diagnostic
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          
+          // 'Authorization': 'Bearer ' + bearerToken
+      
+        }
+      })
+    })
     .catch(e=>console.log(e))
 
 }
   const handleOk = () => {
-    console.log(detalii)
+    console.log("detalii pacienti ",detalii)
     adaugarePacient()
     setIsModalVisible(false);
-    setDetaliiPacient(detalii);
   };
 
   const handleCancel = () => {
@@ -48,17 +76,18 @@ const adaugarePacient=()=>{
   return (
     <>
       <Modal title="Adaugare Pacient" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okText="Adauga" cancelText="Inapoi" >
-        <Input onPressEnter={(a)=>{detalii.PacientCNP=Number(a.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="CNP"></Input>
-        <Input onPressEnter={(b)=>{detalii.Nume=b.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Nume"></Input>
-        <Input onPressEnter={(c)=>{detalii.Prenume=c.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Prenume"></Input>
-        <Input onPressEnter={(d)=>{detalii.Varsta=Number(d.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Varsta"></Input>
-        <Input onPressEnter={(e)=>{detalii.Sex=Boolean(e.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Sex"></Input>
-        <Input onPressEnter={(f)=>{detalii.Telefon=Number(f.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Telefon"></Input>
-        <Input onPressEnter={(g)=>{detalii.Profesie=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Profesie"></Input>
-        <Input onPressEnter={(f)=>{detalii.LocDeMunca=f.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Loc De Munca"></Input>
-        <Input onPressEnter={(g)=>{detalii.Email=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Email"></Input>
-        <TextArea style={{marginBottom:"5px"}} placeholder="Diagnostic"></TextArea>
-        <TextArea style={{marginBottom:"5px"}} placeholder="Medicament"></TextArea>
+        <Input onPressEnter={(a)=>{detalii.pacientCNP=Number(a.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="CNP"></Input>
+        <Input onPressEnter={(b)=>{detalii.nume=b.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Nume"></Input>
+        <Input onPressEnter={(c)=>{detalii.prenume=c.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Prenume"></Input>
+        <Input onPressEnter={(d)=>{detalii.varsta=Number(d.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Varsta"></Input>
+        <Input onPressEnter={(e)=>{detalii.sex=Boolean(e.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Sex"></Input>
+        <Input onPressEnter={(f)=>{detalii.telefon=Number(f.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Telefon"></Input>
+        <Input onPressEnter={(g)=>{detalii.profesie=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Profesie"></Input>
+        <Input onPressEnter={(f)=>{detalii.locDeMunca=f.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Loc De Munca"></Input>
+        <Input onPressEnter={(g)=>{detalii.email=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Email"></Input>
+        <Input onPressEnter={(g)=>{detalii.tratamente.pat=Number(g.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Pat"></Input>
+        <TextArea onPressEnter={(g)=>{detalii.tratamente.diagnostic=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Diagnostic"></TextArea>
+        <TextArea onPressEnter={(g)=>{detalii.tratamente.medicament=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Medicament"></TextArea>
       </Modal>
     </>
   );

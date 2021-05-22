@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { mockedData } from "../common/HardcodedData";
 import axios from 'axios';
-import { Doctori } from "../common/common";
+import { Doctori, Pacienti, Tratament } from "../common/common";
 
 export enum Screens {
     Loading,
@@ -18,7 +18,22 @@ export const useApp=()=>{
     const [headerTitle,setHeaderTitle]=useState("");
     const [backButtonVisible,setBackButtonVisible]=useState(false)
     const [bearerToken,setBearerToken]=useState("")
-    const [inregMedic,setInregMedic]=useState("");
+    const [inregMedic,setInregMedic]=useState<number>(0);
+    const [datePacienti,setDatePacienti]=useState<Pacienti[]>([])
+    const [dateDoctori,setDateDoctori]=useState<Doctori>({nume:"",parola:"",prenume:"",codParafa:0})
+    const [detaliiPacient,setDetaliiPacient]=useState({pacientId:0,nume:'',prenume:'',pacientCNP:0,varsta:0,sex:true,telefon:0,profesie:'',locDeMunca:'',email:'',tratamente:{pacientId:0,diagnostic:"",pat:0,medicament:""}})
+    const [pacientId,setPacientId]=useState<any[]>([])
+    const [tratament,setTratament]=useState<Tratament[]>([])
+
+    const  getPacienti= async ()=>{
+      axios
+      .get("https://localhost:44327/pacients/pacientiMedic",{params:{codParafa:inregMedic}})
+      .then( async raspuns=>{
+         setDatePacienti(raspuns.data);
+         console.log(raspuns.data)
+        })
+      .catch(e=>console.log(e))
+    }
 
 
 
@@ -41,6 +56,12 @@ const autentificare=()=>{
             {params:{codParafa:inregMedic},
                 headers:{'Authorization': 'Bearer ' + raspuns.data}
         })
+        .then(raspuns=>{
+            setDateDoctori(raspuns.data)
+            setScreens(Screens.Loading);
+            if(datePacienti!=null)
+            navigateToPacienti();
+        })
     })
     .catch(e=>console.log(e))
     
@@ -49,7 +70,6 @@ const autentificare=()=>{
 
 
 const navigateToPacienti =()=>{
-autentificare()
     setHeaderVisible(false);
     setScreens(Screens.Pacienti);
     setBackButtonVisible(false);
@@ -69,13 +89,15 @@ const navigateToAutentificare=()=>{
     setHeaderTitle("Autentificare");
 }
 
-const navigateToIstoricPacient=()=>{
+const navigateToIstoricPacient=async ()=>{
     setScreens(Screens.IstoricPacient);
 }
 const DatePacienti=()=>{
-    console.log(searchCriteria)
-    return mockedData.filter((_) => _.Nume.includes(searchCriteria));
-}
+    console.log(searchCriteria);
+        return datePacienti.filter((_) => (_.nume).includes(searchCriteria))}
+
+    
+
 
     return {screens,
             navigateToPacienti,
@@ -88,9 +110,16 @@ const DatePacienti=()=>{
             headerTitle,
             backButtonVisible,
             setInregMedic,
-            bearerToken
+            bearerToken,
+            autentificare,
+            getPacienti,
+            dateDoctori,
+            setDetaliiPacient,
+            detaliiPacient,
+            inregMedic,
+            pacientId,
+            tratament
         };
 
-  }
-
+    }
   

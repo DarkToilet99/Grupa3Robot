@@ -13,6 +13,7 @@ import {useApp} from './components/StateFile'
 
 
 export const App= ()=>{
+ 
   const {
     screens,
     navigateToPacienti,
@@ -25,17 +26,25 @@ export const App= ()=>{
     headerTitle,
     backButtonVisible,
     setInregMedic,
-    bearerToken }=useApp();
+    bearerToken,
+    autentificare,
+    getPacienti,
+    dateDoctori,
+    setDetaliiPacient,
+    detaliiPacient,
+    inregMedic,
+    tratament }=useApp();
   return (
+    
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
   <SiteHeader backButtonVisible={backButtonVisible} navigateToAutentificare={navigateToAutentificare} headerTitle={headerTitle} headerVisible={headerVisible} />
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
       <div style={{ marginLeft:"750px",width:"400px",marginTop:"200px"}}>
-        <NormalLoginForm setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={navigateToPacienti} navigateToRegister={navigateToRegister} />
+        <NormalLoginForm getPacienti={getPacienti} setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={autentificare} navigateToRegister={navigateToRegister} />
         </div>
-        <PacientiPage bearerToken={bearerToken} stareRobot={stareRobotMocked[0].Ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={mockedDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
-       <IstoricPacient dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
+        <PacientiPage detaliiPacient={detaliiPacient} inregMedic={inregMedic} setDetaliiPacient={setDetaliiPacient} bearerToken={bearerToken} stareRobot={stareRobotMocked[0].ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={dateDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
+       <IstoricPacient dataTratament={tratament} dataPacient={detaliiPacient} dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
        <div style={{width:"400px", marginLeft:"750px",marginTop:"200px"}}>
        <RegisterForm  navigateToPacienti={navigateToPacienti} ></RegisterForm>
        </div>

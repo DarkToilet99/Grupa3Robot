@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,16 @@ namespace WebApi.Controllers
             await context.SaveChangesAsync();
             return Ok();
             
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetTrataments([FromQuery] int pacientId)
+        {
+
+            var tratamente = await context.Tratament.Where(u => u.PacientId == pacientId).FirstOrDefaultAsync();
+            if (tratamente == null)
+                return BadRequest("pacientul nu are tratament!");
+            return Ok(tratamente);
         }
     }
 }

@@ -25,10 +25,10 @@ namespace WebApi.Controllers
 
     [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetMedics([FromQueryAttribute] string codParafa)
+        public async Task<IActionResult> GetMedics([FromQuery] int codParafa)
     {
             
-            var medic = await context.Medic.Where(u=>u.CodParafa.Equals(codParafa)).FirstOrDefaultAsync();
+            var medic = await context.Medic.Where(u=>u.CodParafa==codParafa).FirstOrDefaultAsync();
             if (medic == null)
                 return BadRequest("medicul nu exista");
             return Ok(medic);

@@ -9,16 +9,16 @@ export interface RegisterProps {
 
 
   export const RegisterForm = ({navigateToPacienti}:RegisterProps) => {
-    const [query,setQuery]=useState<Doctori>({Nume:"",Prenume:"",CodParafa:0,Parola:0})
+    const [query,setQuery]=useState<Doctori>({nume:"",prenume:"",codParafa:0,parola:""})
 
 
     const inregistrareMedic=()=>{
       axios
       .post<Doctori>("https://localhost:44327/medics",  
-          {Nume:query.Nume,
-           Prenume:query.Prenume,
-          CodParafa:query.CodParafa,
-        Parola:query.Parola}
+          {Nume:query.nume,
+           Prenume:query.prenume,
+          CodParafa:query.codParafa,
+        Parola:query.parola}
          ,{
           headers: {
               "Content-Type": "application/json"
@@ -30,7 +30,7 @@ export interface RegisterProps {
       .catch(e=>console.log(e))
   }
 
-   const [dateDoctor,setDateDoctor]=useState({Nume:"",Prenume:"",CodParafa:0,Parola:0})
+   const [dateDoctor,setDateDoctor]=useState({nume:"",prenume:"",codParafa:0,parola:""})
 
    
 return (
@@ -52,11 +52,11 @@ return (
         ]}
       >
          <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
-        <Input style={{marginBottom:"20px"}} onPressEnter={(numeMedic)=>{console.log(numeMedic.currentTarget.defaultValue);setQuery({...query,Nume: numeMedic.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume" />
+        <Input style={{marginBottom:"20px"}} onPressEnter={(numeMedic)=>{setQuery({...query,nume: numeMedic.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume" />
          </Popover>
          
         <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
-        <Input onPressEnter={(prenume)=>{setQuery({...query,Prenume: prenume.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Prenume" />
+        <Input  onBlur={(prenume)=>{setQuery({...query,prenume: prenume.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Prenume" />
           </Popover> 
      </Form.Item>
       
@@ -71,7 +71,7 @@ return (
       >
           <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
             <Input
-        onPressEnter={(parola)=>{setQuery({...query,Parola: Number(parola.currentTarget.defaultValue)})}}
+        onPressEnter={(parola)=>{setQuery({...query,parola:parola.currentTarget.defaultValue})}}
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
           placeholder="Parola"
@@ -89,7 +89,7 @@ return (
       >
         <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
         <Input
-        onPressEnter={(parafa)=>{setQuery({...query,CodParafa: Number(parafa.currentTarget.defaultValue)});
+        onBlur={(parafa)=>{setQuery({...query,codParafa: Number(parafa.currentTarget.defaultValue)});
         console.log(Number(parafa.currentTarget.defaultValue));}}
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
@@ -102,7 +102,6 @@ return (
       <Form.Item>
         <Button type="primary" style={{marginLeft:"130px"}} onClick={()=>{
           setTimeout(() =>setDateDoctor(query), 1000)
-          console.log(query);
           inregistrareMedic();
           navigateToPacienti()}}>Inregistreaza-te</Button>
             

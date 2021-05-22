@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import React from "react";
-import { Doctori, Transporturi } from "../../common/common";
+import { Doctori, Pacienti, Transporturi, Tratament } from "../../common/common";
 import { DetaliiPacient } from "./DetaliiPacient";
 import { IstoricTransporturi } from "./IstoricTransporturi";
 
@@ -8,16 +8,19 @@ export interface IstoricPacientProps{
     dataDoctori:Doctori[];
     navigateToPacienti:()=>void;
     dataTransporturi:Transporturi[];
+    dataPacient:Pacienti;
+    dataTratament:Tratament[];
 }
 
-export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi}:IstoricPacientProps)=>{
+export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi,dataPacient,dataTratament}:IstoricPacientProps)=>{
     return(<div>
+       
         <div style={{display:"flex"}}>
-        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].Nume}</h1>
+        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].nume}</h1>
         <Button size="large" style={{marginLeft:"1550px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
         </div>
         <div style={{display:"flex"}}>
-        <DetaliiPacient></DetaliiPacient>
+        <DetaliiPacient dataTratament={dataTratament[0]} dataPacient={dataPacient}></DetaliiPacient>
         <div style={{marginLeft:"300px", marginTop:"70px"}}><IstoricTransporturi data={dataTransporturi}></IstoricTransporturi></div>
         
         

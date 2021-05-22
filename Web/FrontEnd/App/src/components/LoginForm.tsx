@@ -6,13 +6,12 @@ export interface LoginProps {
   navigateToPacienti:()=>void;
   navigateToAutentificare:()=>void;
   navigateToRegister:()=>void;
-  setInregMedic:(codParafa:string)=>void;
+  setInregMedic:(codParafa:any)=>void;
+  getPacienti:()=>void;
 }
 
-export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare,navigateToRegister,setInregMedic}:LoginProps) => {
-  const onFinish = (values:any) => {
-    console.log('Received values of form: ', values);
-  };
+export const NormalLoginForm = ({navigateToPacienti,navigateToAutentificare,navigateToRegister,setInregMedic,getPacienti}:LoginProps) => {
+
 navigateToAutentificare();
   return (
     <Form
@@ -21,7 +20,6 @@ navigateToAutentificare();
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
     >
       <Form.Item
         name="username"
@@ -66,7 +64,7 @@ navigateToAutentificare();
       >
         <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
         <Input
-        onPressEnter={(a)=>{console.log(a.currentTarget.defaultValue);setInregMedic(a.currentTarget.defaultValue)}}
+        onPressEnter={(a)=>{setInregMedic(Number(a.currentTarget.defaultValue))}}
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
           type="cod_parafa"
@@ -76,7 +74,7 @@ navigateToAutentificare();
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary"  className="login-form-button" onClick={()=>navigateToPacienti()}>
+        <Button type="primary"  className="login-form-button" onClick={()=>{getPacienti();navigateToPacienti()}}>
           Autentificare
         </Button>
         <Button style={{marginLeft:"128px"}} onClick={()=>navigateToRegister()}>

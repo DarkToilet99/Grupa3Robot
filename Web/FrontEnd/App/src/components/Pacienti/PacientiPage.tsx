@@ -10,19 +10,21 @@ export interface PacientiProps{
     setSearchCriteria:(text:any)=>void;
     data:Pacienti[];
     navigateToAutentificare:()=>void;
-    dataDoctori:Doctori[];
+    dataDoctori:Doctori;
     navigateToIstoricPacienti:()=>void;
     stareRobot:string;
     bearerToken:string;
+    setDetaliiPacient:(detalii:Pacienti)=>void;
+    inregMedic:number;
+    detaliiPacient:Pacienti;
 }
 
-export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot,bearerToken}:PacientiProps)=>{
+export const PacientiPage=({setSearchCriteria,inregMedic,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot,bearerToken,setDetaliiPacient,detaliiPacient}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
-
     return(
         <>
         <div style={{display:"flex", marginLeft:"100px"}}>
-        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].Nume}</h1>
+        <h1 style={{marginTop:"20px", marginLeft:"40px"}}>{dataDoctori.nume+" "+ dataDoctori.prenume}</h1>
         <Button size="large" style={{marginLeft:"1450px", marginTop:"30px"}} onClick={()=>{navigateToAutentificare()}}>Deconectare</Button>
         </div>
         <div style={{ display:"flex",marginLeft:"820px", marginTop:"120px", textDecorationLine:"underline" }}>
@@ -33,13 +35,13 @@ export const PacientiPage=({setSearchCriteria,data,navigateToAutentificare, navi
 
         <Search  style={{marginLeft:"500px", width:"897px"}} placeholder={"Cauta pacientul dupa nume"} onChange={()=>(setSearchCriteria(""))} onSearch={(text)=>{setSearchCriteria(text)}}></Search>
 
-        <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
+        <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti setDetaliiPacient={setDetaliiPacient} navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
-        <AdaugarePacient bearerToken={bearerToken} setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
+        <AdaugarePacient detaliiPacienti={detaliiPacient} inregMedic={inregMedic} bearerToken={bearerToken} setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
         <div style={{display:"flex"}}>
         <div style={{display:"flex",marginTop:"40px"}}>
         <h1 style={{marginLeft:"140px"}}>Alarme:</h1>
-        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-{stareRobotMocked[0].Ocupat}-</h1></div>
+        <h1 style={{marginLeft:"20px", border:"1px solid black"}} >-{stareRobotMocked[0].ocupat}-</h1></div>
         <div style={{display:"flex", marginTop:"40px"}}>
         <h1 style={{marginLeft:"840px"}}>Stare Robot:</h1>
         <h1 style={{marginLeft:"20px", border:"1px solid black"}}>-{stareRobot}-</h1></div>
