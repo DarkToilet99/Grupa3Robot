@@ -26,7 +26,7 @@ namespace AuthenticationApi
             services.AddDbContext<AuthContext>(options =>
             {
                 //Serverul din MSSM(Microsoft SQL Server Management),Catalog = nume baza de data(ApiDatabase)
-                options.UseSqlServer($"Server=POPUSHKA;Initial Catalog=ApiDatabase;MultipleActiveResultSets=true;Integrated Security=true;");
+                options.UseSqlServer($"Server=DESKTOP-36P4EF1\\SQLEXPRESS;Initial Catalog=ApiDatabase;MultipleActiveResultSets=true;Integrated Security=true;");
             });
 
             services.AddControllers();

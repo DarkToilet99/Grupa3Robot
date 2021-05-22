@@ -1,14 +1,14 @@
-import { Form, Input, Button, Popover } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Doctori } from '../common/common';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 export interface RegisterProps {
-    navigateToPacienti:()=>void;
+    navigateToAutentificare:()=>void;
   }
 
 
-  export const RegisterForm = ({navigateToPacienti}:RegisterProps) => {
+  export const RegisterForm = ({navigateToAutentificare}:RegisterProps) => {
     const [query,setQuery]=useState<Doctori>({nume:"",prenume:"",codParafa:0,parola:""})
 
 
@@ -51,13 +51,11 @@ return (
           },
         ]}
       >
-         <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
-        <Input style={{marginBottom:"20px"}} onPressEnter={(numeMedic)=>{setQuery({...query,nume: numeMedic.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume" />
-         </Popover>
-         
-        <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
+       
+        <Input style={{marginBottom:"20px"}} onBlur={(numeMedic)=>{setQuery({...query,nume: numeMedic.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nume" />
+
         <Input  onBlur={(prenume)=>{setQuery({...query,prenume: prenume.currentTarget.defaultValue})}} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Prenume" />
-          </Popover> 
+         
      </Form.Item>
       
       <Form.Item
@@ -69,13 +67,12 @@ return (
           },
         ]}
       >
-          <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
             <Input
-        onPressEnter={(parola)=>{setQuery({...query,parola:parola.currentTarget.defaultValue})}}
+        onBlur={(parola)=>{setQuery({...query,parola:parola.currentTarget.defaultValue})}}
         prefix={<LockOutlined className="site-form-item-icon" />}
             size="middle"
           placeholder="Parola"
-        /></Popover>
+        />
        
       </Form.Item>
       <Form.Item
@@ -87,7 +84,6 @@ return (
           },
         ]}
       >
-        <Popover trigger="click" content={<div>Dupa ce ati introdus datele apasati Enter!</div>}>
         <Input
         onBlur={(parafa)=>{setQuery({...query,codParafa: Number(parafa.currentTarget.defaultValue)});
         console.log(Number(parafa.currentTarget.defaultValue));}}
@@ -96,14 +92,13 @@ return (
           type="cod_parafa"
           placeholder="Cod Parafa"
         />
-        </Popover>
       </Form.Item>
 
       <Form.Item>
         <Button type="primary" style={{marginLeft:"130px"}} onClick={()=>{
           setTimeout(() =>setDateDoctor(query), 1000)
           inregistrareMedic();
-          navigateToPacienti()}}>Inregistreaza-te</Button>
+          navigateToAutentificare()}}>Inregistreaza-te</Button>
             
       </Form.Item>
     </Form>

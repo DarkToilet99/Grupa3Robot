@@ -25,10 +25,12 @@ namespace WebApi.Controllers
 
     [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetMedics([FromQuery] int codParafa)
+        public async Task<IActionResult> GetMedics([FromQuery] int codParafa, [FromQuery] string parola)
     {
             
             var medic = await context.Medic.Where(u=>u.CodParafa==codParafa).FirstOrDefaultAsync();
+            if (await context.Medic.Where(u => u.Parola.Equals(parola)).FirstOrDefaultAsync() == null)
+                return BadRequest("parola nu e corecta");
             if (medic == null)
                 return BadRequest("medicul nu exista");
             return Ok(medic);
@@ -75,7 +77,7 @@ namespace WebApi.Controllers
             {
                 return Unauthorized("Nu ai voie sa faci asta");
             }
-            Medic medic = await context.Medic.Where(m => m.CodParafa.Equals(request.CodParafa)).FirstOrDefaultAsync();
+            Medic medic = await context.Medic.Where(m => m.CodParafa==request.CodParafa).FirstOrDefaultAsync();
             if(medic == null)
             {
                 return BadRequest("Nu exista un medic cu acest cod parafa!");

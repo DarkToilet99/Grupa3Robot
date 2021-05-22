@@ -1,6 +1,6 @@
 import { Button } from "antd"
 import Search from "antd/lib/input/Search";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Doctori, Pacienti, StareRobot } from "../../common/common";
 import { stareRobotMocked } from "../../common/HardcodedData";
 import { AdaugarePacient } from "./AdaugarePacient";
@@ -17,10 +17,16 @@ export interface PacientiProps{
     setDetaliiPacient:(detalii:Pacienti)=>void;
     inregMedic:number;
     detaliiPacient:Pacienti;
+    getPacienti:()=>void;
+    setPacientDeSters:(pacientCnp:number)=>void;
+    stergerePacient:()=>void;
 }
 
-export const PacientiPage=({setSearchCriteria,inregMedic,data,navigateToAutentificare, navigateToIstoricPacienti,dataDoctori,stareRobot,bearerToken,setDetaliiPacient,detaliiPacient}:PacientiProps)=>{
+export const PacientiPage=({setSearchCriteria,inregMedic,stergerePacient, data,navigateToAutentificare,setPacientDeSters, navigateToIstoricPacienti,getPacienti,dataDoctori,stareRobot,bearerToken,setDetaliiPacient,detaliiPacient}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
+    useEffect(() => {
+        getPacienti();
+      },[]);
     return(
         <>
         <div style={{display:"flex", marginLeft:"100px"}}>
@@ -35,9 +41,9 @@ export const PacientiPage=({setSearchCriteria,inregMedic,data,navigateToAutentif
 
         <Search  style={{marginLeft:"500px", width:"897px"}} placeholder={"Cauta pacientul dupa nume"} onChange={()=>(setSearchCriteria(""))} onSearch={(text)=>{setSearchCriteria(text)}}></Search>
 
-        <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti setDetaliiPacient={setDetaliiPacient} navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
+        <div style={{marginLeft:"500px", maxWidth:"895px"}}><ListaPacienti stergerePacient={stergerePacient} setPacientDeSters={setPacientDeSters} setDetaliiPacient={setDetaliiPacient} navigateToIstoricPacienti={navigateToIstoricPacienti} data={data}></ListaPacienti></div>
         
-        <AdaugarePacient detaliiPacienti={detaliiPacient} inregMedic={inregMedic} bearerToken={bearerToken} setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
+        <AdaugarePacient getPacienti={getPacienti} detaliiPacienti={detaliiPacient} inregMedic={inregMedic} bearerToken={bearerToken} setIsModalVisible={setIsAddModalVisible} isModalVisible={isAddModalVisible} ></AdaugarePacient>
         <div style={{display:"flex"}}>
         <div style={{display:"flex",marginTop:"40px"}}>
         <h1 style={{marginLeft:"140px"}}>Alarme:</h1>

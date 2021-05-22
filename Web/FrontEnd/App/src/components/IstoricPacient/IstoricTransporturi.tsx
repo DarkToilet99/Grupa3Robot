@@ -1,6 +1,6 @@
 import { Input, List } from "antd"
 import React from "react";
-import { Pacienti, Transporturi } from "../../common/common";
+import { Transporturi } from "../../common/common";
 import { ItemTransport } from "./ItemTransport";
 
 export interface IstoricTransporturiProps{

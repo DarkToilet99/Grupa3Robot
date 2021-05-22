@@ -23,8 +23,8 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreazaPacient(CreatePacientRequest request)
         {
-            await context.Medic.Where(m => m.CodParafa == request.MedicId).LoadAsync();
-            Medic medic = await context.Medic.Where(m => m.CodParafa == request.MedicId).Include(m=>m.Pacients).FirstOrDefaultAsync();
+            await context.Medic.Where(m => m.CodParafa==request.MedicId).LoadAsync();
+            Medic medic = await context.Medic.Where(m => m.CodParafa==request.MedicId).Include(m=>m.Pacients).FirstOrDefaultAsync();
             if(medic == null)
             {
                 return BadRequest();
@@ -64,8 +64,8 @@ namespace WebApi.Controllers
         [Route("pacientiMedic")]
         public async Task<IActionResult> GetPacients([FromQuery] int codParafa)
         {
-            await context.Medic.Where(m => m.CodParafa == codParafa).LoadAsync();
-            Medic medic = await context.Medic.Where(m => m.CodParafa == codParafa).Include(m => m.Pacients).ThenInclude(a=>a.Tratamente).FirstOrDefaultAsync();
+            await context.Medic.Where(m => m.CodParafa==codParafa).LoadAsync();
+            Medic medic = await context.Medic.Where(m => m.CodParafa==codParafa).Include(m => m.Pacients).ThenInclude(a=>a.Tratamente).FirstOrDefaultAsync();
             if (medic == null)
             {
                 return BadRequest();
@@ -77,15 +77,17 @@ namespace WebApi.Controllers
         public async Task<IActionResult> DeleteMedic(DeletePacientRequest request,[FromQuery] int codParafa)
         {
 
-            await context.Medic.Where(m => m.CodParafa == codParafa).LoadAsync();
-            Medic medic = await context.Medic.Where(m => m.CodParafa == codParafa).Include(m => m.Pacients).FirstOrDefaultAsync();
+            await context.Medic.Where(m => m.CodParafa==codParafa).LoadAsync();
+            Medic medic = await context.Medic.Where(m => m.CodParafa==codParafa).Include(m => m.Pacients).ThenInclude(m=>m.Tratamente).FirstOrDefaultAsync();
 
             Pacient pacient =  medic.Pacients.Where(m => m.PacientCNP == request.PacientCNP).FirstOrDefault();
-            if (medic.Pacients == null)
+            if (pacient == null)
             {
                 return BadRequest("Nu exista un pacient cu acest cnp!");
             }
-            context.Pacient.Remove(pacient);
+            medic.Pacients.Remove(pacient);
+           
+             
             await context.SaveChangesAsync();
             return NoContent();
         }

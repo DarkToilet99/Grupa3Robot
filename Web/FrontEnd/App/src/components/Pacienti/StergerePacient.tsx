@@ -4,12 +4,14 @@ export interface ModalStergerePacientProps
 {
     setIsModalVisible:(isModalVisible:boolean)=>void;
     isModalVisible:boolean;
+    stergerePacient:()=>void;
 }
 
-export const ModalStergerePacient = ({isModalVisible,setIsModalVisible}:ModalStergerePacientProps) => {
+export const ModalStergerePacient = ({isModalVisible,setIsModalVisible,stergerePacient}:ModalStergerePacientProps) => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    stergerePacient()
   };
 
   const handleCancel = () => {

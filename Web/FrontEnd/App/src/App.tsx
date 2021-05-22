@@ -33,7 +33,9 @@ export const App= ()=>{
     setDetaliiPacient,
     detaliiPacient,
     inregMedic,
-    tratament }=useApp();
+    setParolaInregistrare,
+    setPacientDeSters,stergerePacient
+   }=useApp();
   return (
     
   <div style={{maxHeight:"600px", maxWidth:"1920px"}} >
@@ -41,12 +43,12 @@ export const App= ()=>{
       <Navigation activeScreen={screens}>
         <Loading navigateToAutentificare={navigateToAutentificare}></Loading>
       <div style={{ marginLeft:"750px",width:"400px",marginTop:"200px"}}>
-        <NormalLoginForm getPacienti={getPacienti} setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={autentificare} navigateToRegister={navigateToRegister} />
+        <NormalLoginForm setParolaInregistrare={setParolaInregistrare} getPacienti={getPacienti} setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={autentificare} navigateToRegister={navigateToRegister} />
         </div>
-        <PacientiPage detaliiPacient={detaliiPacient} inregMedic={inregMedic} setDetaliiPacient={setDetaliiPacient} bearerToken={bearerToken} stareRobot={stareRobotMocked[0].ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={dateDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
-       <IstoricPacient dataTratament={tratament} dataPacient={detaliiPacient} dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
+        <PacientiPage stergerePacient={stergerePacient} setPacientDeSters={setPacientDeSters} getPacienti={getPacienti} detaliiPacient={detaliiPacient} inregMedic={inregMedic} setDetaliiPacient={setDetaliiPacient} bearerToken={bearerToken} stareRobot={stareRobotMocked[0].ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={dateDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
+       <IstoricPacient dataPacient={detaliiPacient} dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
        <div style={{width:"400px", marginLeft:"750px",marginTop:"200px"}}>
-       <RegisterForm  navigateToPacienti={navigateToPacienti} ></RegisterForm>
+       <RegisterForm  navigateToAutentificare={navigateToAutentificare} ></RegisterForm>
        </div>
       </Navigation>
       </div>

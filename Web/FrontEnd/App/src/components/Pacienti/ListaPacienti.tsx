@@ -1,6 +1,5 @@
 import {List} from 'antd';
 import axios from 'axios';
-import { useState } from 'react';
 import { Pacienti } from '../../common/common';
 import { ItemPacient } from './ItemList';
 
@@ -8,9 +7,11 @@ export interface ListaPacientiProps{
   data:Pacienti[];
   navigateToIstoricPacienti:()=>void;
   setDetaliiPacient:(detalii:Pacienti)=>void;
+  setPacientDeSters:(pacientCnp:number)=>void;
+  stergerePacient:()=>void;
 }
 
-export const ListaPacienti=({data,navigateToIstoricPacienti,setDetaliiPacient}:ListaPacientiProps)=>{
+export const ListaPacienti=({data,navigateToIstoricPacienti,setDetaliiPacient,setPacientDeSters,stergerePacient}:ListaPacientiProps)=>{
   return(
         <List
           itemLayout="vertical"
@@ -23,7 +24,7 @@ export const ListaPacienti=({data,navigateToIstoricPacienti,setDetaliiPacient}:L
            }}
             dataSource={data}
             renderItem={item => (      
-                <ItemPacient setDetaliiPacient={setDetaliiPacient} navigateToIstoricPacienti={navigateToIstoricPacienti} itemPacient={item}></ItemPacient>
+                <ItemPacient stergerePacient={stergerePacient} setPacientDeSters={setPacientDeSters} setDetaliiPacient={setDetaliiPacient} navigateToIstoricPacienti={navigateToIstoricPacienti} itemPacient={item}></ItemPacient>
             )}
        />
   );

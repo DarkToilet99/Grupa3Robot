@@ -9,10 +9,9 @@ export interface IstoricPacientProps{
     navigateToPacienti:()=>void;
     dataTransporturi:Transporturi[];
     dataPacient:Pacienti;
-    dataTratament:Tratament[];
 }
 
-export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi,dataPacient,dataTratament}:IstoricPacientProps)=>{
+export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi,dataPacient}:IstoricPacientProps)=>{
     return(<div>
        
         <div style={{display:"flex"}}>
@@ -20,7 +19,7 @@ export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi,da
         <Button size="large" style={{marginLeft:"1550px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
         </div>
         <div style={{display:"flex"}}>
-        <DetaliiPacient dataTratament={dataTratament[0]} dataPacient={dataPacient}></DetaliiPacient>
+        <DetaliiPacient dataPacient={dataPacient}></DetaliiPacient>
         <div style={{marginLeft:"300px", marginTop:"70px"}}><IstoricTransporturi data={dataTransporturi}></IstoricTransporturi></div>
         
         

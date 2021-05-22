@@ -6,11 +6,10 @@ import { Pacienti, Tratament } from "../../common/common";
 
 export interface DetaliiPacientProps{
     dataPacient:Pacienti;
-    dataTratament:Tratament;
 }
 
 
-export const DetaliiPacient=({dataPacient,dataTratament}:DetaliiPacientProps)=>{
+export const DetaliiPacient=({dataPacient}:DetaliiPacientProps)=>{
     let tratament_temporal:Tratament={medicament:"",diagnostic:"",pat:0,pacientId:0};
     const [k,setK]=useState(0);
     const [tratament,setTratament]=useState({medicament:"",diagnostic:"",pat:0,pacientId:0});
@@ -28,7 +27,7 @@ export const DetaliiPacient=({dataPacient,dataTratament}:DetaliiPacientProps)=>{
         console.log(k)
     console.log(tratament)}
 let sexPacient;
-if(dataPacient.sex==true)
+if(dataPacient.sex===true)
 sexPacient="Masculin"
 else
 sexPacient="Feminin"

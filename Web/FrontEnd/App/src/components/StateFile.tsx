@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { mockedData } from "../common/HardcodedData";
 import axios from 'axios';
 import { Doctori, Pacienti, Tratament } from "../common/common";
 
@@ -18,12 +17,12 @@ export const useApp=()=>{
     const [headerTitle,setHeaderTitle]=useState("");
     const [backButtonVisible,setBackButtonVisible]=useState(false)
     const [bearerToken,setBearerToken]=useState("")
-    const [inregMedic,setInregMedic]=useState<number>(0);
+    const [inregMedic,setInregMedic]=useState(0);
     const [datePacienti,setDatePacienti]=useState<Pacienti[]>([])
     const [dateDoctori,setDateDoctori]=useState<Doctori>({nume:"",parola:"",prenume:"",codParafa:0})
     const [detaliiPacient,setDetaliiPacient]=useState({pacientId:0,nume:'',prenume:'',pacientCNP:0,varsta:0,sex:true,telefon:0,profesie:'',locDeMunca:'',email:'',tratamente:{pacientId:0,diagnostic:"",pat:0,medicament:""}})
-    const [pacientId,setPacientId]=useState<any[]>([])
-    const [tratament,setTratament]=useState<Tratament[]>([])
+    const [parolaInregistrare,setParolaInregistrare]=useState("");
+    const [pacientDeSters,setPacientDeSters]=useState(0)
 
     const  getPacienti= async ()=>{
       axios
@@ -38,7 +37,6 @@ export const useApp=()=>{
 
 
 const autentificare=()=>{
-
     axios
     .post<string>("https://localhost:44344/auth",  
         {Username:"admin",
@@ -53,7 +51,7 @@ const autentificare=()=>{
         setBearerToken(raspuns.data.toString())
             axios
             .get<Doctori>("https://localhost:44327/medics",
-            {params:{codParafa:inregMedic},
+            {params:{codParafa:inregMedic,parola:parolaInregistrare},
                 headers:{'Authorization': 'Bearer ' + raspuns.data}
         })
         .then(raspuns=>{
@@ -68,6 +66,16 @@ const autentificare=()=>{
         
 }
 
+const stergerePacient=()=>{
+    axios
+        .delete("https://localhost:44327/pacients",
+        {params:{codParafa:inregMedic},
+        data:{pacientCNP:pacientDeSters}
+})
+          
+        .then(a=>getPacienti())
+      .catch(e=>console.log(e))
+  }
 
 const navigateToPacienti =()=>{
     setHeaderVisible(false);
@@ -94,7 +102,10 @@ const navigateToIstoricPacient=async ()=>{
 }
 const DatePacienti=()=>{
     console.log(searchCriteria);
-        return datePacienti.filter((_) => (_.nume).includes(searchCriteria))}
+
+        return datePacienti.filter((_) => (_.nume).toLocaleLowerCase().includes(searchCriteria.toLocaleLowerCase()) || (_.pacientCNP.toString().includes(searchCriteria)))
+
+    }
 
     
 
@@ -117,8 +128,9 @@ const DatePacienti=()=>{
             setDetaliiPacient,
             detaliiPacient,
             inregMedic,
-            pacientId,
-            tratament
+            setParolaInregistrare,
+            setPacientDeSters,
+            stergerePacient
         };
 
     }
