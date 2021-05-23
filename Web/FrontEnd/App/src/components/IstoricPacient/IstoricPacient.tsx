@@ -5,7 +5,7 @@ import { DetaliiPacient } from "./DetaliiPacient";
 import { IstoricTransporturi } from "./IstoricTransporturi";
 
 export interface IstoricPacientProps{
-    dataDoctori:Doctori[];
+    dataDoctori:Doctori;
     navigateToPacienti:()=>void;
     dataTransporturi:Transporturi[];
     dataPacient:Pacienti;
@@ -15,8 +15,8 @@ export const IstoricPacient=({dataDoctori,navigateToPacienti,dataTransporturi,da
     return(<div>
        
         <div style={{display:"flex"}}>
-        <h1 style={{marginTop:"20px", marginLeft:"100px"}}>{dataDoctori[0].nume}</h1>
-        <Button size="large" style={{marginLeft:"1550px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
+        <h1 style={{marginTop:"20px",marginLeft:"100px",width:"500px"}}>{dataDoctori.nume+" "+dataDoctori.prenume}</h1>
+        <Button size="large" style={{marginLeft:"1150px", marginTop:"30px"}} onClick={()=>{navigateToPacienti()}}>🡸 Inapoi</Button>
         </div>
         <div style={{display:"flex"}}>
         <DetaliiPacient dataPacient={dataPacient}></DetaliiPacient>

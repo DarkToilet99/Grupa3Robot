@@ -46,7 +46,7 @@ export const App= ()=>{
         <NormalLoginForm setParolaInregistrare={setParolaInregistrare} getPacienti={getPacienti} setInregMedic={setInregMedic} navigateToAutentificare={navigateToAutentificare} navigateToPacienti={autentificare} navigateToRegister={navigateToRegister} />
         </div>
         <PacientiPage stergerePacient={stergerePacient} setPacientDeSters={setPacientDeSters} getPacienti={getPacienti} detaliiPacient={detaliiPacient} inregMedic={inregMedic} setDetaliiPacient={setDetaliiPacient} bearerToken={bearerToken} stareRobot={stareRobotMocked[0].ocupat} navigateToIstoricPacienti={navigateToIstoricPacient} dataDoctori={dateDoctori} navigateToAutentificare={navigateToAutentificare} data={DatePacienti()} setSearchCriteria={setSearchCriteria}/>
-       <IstoricPacient dataPacient={detaliiPacient} dataTransporturi={mockedTransport} dataDoctori={mockedDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
+       <IstoricPacient dataPacient={detaliiPacient} dataTransporturi={mockedTransport} dataDoctori={dateDoctori} navigateToPacienti={navigateToPacienti}></IstoricPacient>
        <div style={{width:"400px", marginLeft:"750px",marginTop:"200px"}}>
        <RegisterForm  navigateToAutentificare={navigateToAutentificare} ></RegisterForm>
        </div>
