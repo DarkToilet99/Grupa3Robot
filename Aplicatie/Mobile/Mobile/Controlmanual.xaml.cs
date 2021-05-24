@@ -13,23 +13,18 @@ namespace Mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Controlmanual : ContentPage
     {
-        BluetoothDeviceModel device;
-        IBluetoothAdapter adapter;
-        IBluetoothConnection connection;
+       
         const int BufferSize = 1;
         const int OffsetDefault = 0;
-        public Controlmanual(BluetoothDeviceModel device, IBluetoothAdapter adapter, IBluetoothConnection connection)
+        public Controlmanual()
         {
             InitializeComponent();
-            this.device = device;
-            this.adapter = adapter;
-            this.connection = connection;
         }
 
         private async void Button_stop(object sender, EventArgs e)
         {
-            //IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
-            //BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
+            IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
+            BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
             if (device != null)
             {
                 using (var connection = adapter.CreateConnection(device))
@@ -46,6 +41,7 @@ namespace Mobile
                     {
                         await DisplayAlert("Error", "Cannot connect.", "Close");
                     }
+                    connection.Dispose();
                 }
                    
             }
@@ -53,8 +49,8 @@ namespace Mobile
 
         private async void Button_in_fata(object sender, EventArgs e)
         {
-            //IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
-            //BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
+            IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
+            BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
             if (device != null)
             {
                 using (var connection = adapter.CreateConnection(device))
@@ -71,6 +67,7 @@ namespace Mobile
                     {
                         await DisplayAlert("Error", "Cannot connect.", "Close");
                     }
+                    connection.Dispose();
                 }
 
             }
@@ -85,6 +82,8 @@ namespace Mobile
 
         private async void Button_spate(object sender, EventArgs e)
         {
+            IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
+            BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
             if (device != null)
             {
                 using (var connection = adapter.CreateConnection(device))
@@ -101,6 +100,7 @@ namespace Mobile
                     {
                         await DisplayAlert("Error", "Cannot connect.", "Close");
                     }
+                    connection.Dispose();
                 }
 
             }
@@ -109,8 +109,8 @@ namespace Mobile
 
         private async void Button_stanga(object sender, EventArgs e)
         {
-            //IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
-           // BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
+            IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
+            BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
             if (device != null)
             {
                 using (var connection = adapter.CreateConnection(device))
@@ -127,6 +127,7 @@ namespace Mobile
                     {
                         await DisplayAlert("Error", "Cannot connect.", "Close");
                     }
+                    connection.Dispose();
                 }
 
             }
@@ -134,8 +135,8 @@ namespace Mobile
 
         private async void Button_dreapta(object sender, EventArgs e)
         {
-            //IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
-            //BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
+            IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
+            BluetoothDeviceModel device = (BluetoothDeviceModel)BindingContext;
             if (device != null)
             {
                 using (var connection = adapter.CreateConnection(device))
@@ -152,6 +153,7 @@ namespace Mobile
                     {
                         await DisplayAlert("Error", "Cannot connect.", "Close");
                     }
+                    connection.Dispose();
                 }
 
             }

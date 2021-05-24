@@ -33,9 +33,7 @@ namespace Mobile
             var device = (BluetoothDeviceModel)e.SelectedItem;
             if(device != null)
             {
-                IBluetoothAdapter adapter = DependencyService.Resolve<IBluetoothAdapter>();
-                var connection = adapter.CreateConnection(device);
-                await Navigation.PushAsync(new Controlmanual(device,adapter, connection));
+                await Navigation.PushAsync(new Controlmanual() {BindingContext = device });
             }
 
             BondedDevices.SelectedItem = null;
