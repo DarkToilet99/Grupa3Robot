@@ -1,4 +1,4 @@
-import { Input, Modal} from 'antd';
+import { Input, Modal, Popover} from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import axios from 'axios';
 import { Pacienti, Tratament } from '../../common/common';
@@ -84,7 +84,7 @@ const adaugarePacient=()=>{
         <Input onBlur={(b)=>{detalii.nume=b.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Nume"></Input>
         <Input onBlur={(c)=>{detalii.prenume=c.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Prenume"></Input>
         <Input onBlur={(d)=>{detalii.varsta=Number(d.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Varsta"></Input>
-        <Input onBlur={(e)=>{detalii.sex=Boolean(e.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Sex"></Input>
+        <Popover trigger="focus" content="Masculin:1  Feminin:0"><Input onBlur={(e)=>{ if(e.currentTarget.defaultValue=="0") detalii.sex=false; else if(e.currentTarget.defaultValue=="1") detalii.sex=true;}} style={{marginBottom:"5px"}} placeholder="Sex"></Input></Popover>
         <Input onBlur={(f)=>{detalii.telefon=Number(f.currentTarget.defaultValue)}} style={{marginBottom:"5px"}} placeholder="Telefon"></Input>
         <Input onBlur={(g)=>{detalii.profesie=g.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Profesie"></Input>
         <Input onBlur={(f)=>{detalii.locDeMunca=f.currentTarget.defaultValue.toString()}} style={{marginBottom:"5px"}} placeholder="Loc De Munca"></Input>

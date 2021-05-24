@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Pacient]
 (
-	[PacientCNP] INT NOT NULL ,
+	[PacientCNP] BIGINT NOT NULL ,
 	[Nume] NVARCHAR(25) NOT NULL, 
     [Prenume] NVARCHAR(50) NOT NULL, 
     [Varsta] INT NOT NULL, 

@@ -24,9 +24,7 @@ export interface PacientiProps{
 
 export const PacientiPage=({setSearchCriteria,inregMedic,stergerePacient, data,navigateToAutentificare,setPacientDeSters, navigateToIstoricPacienti,getPacienti,dataDoctori,stareRobot,bearerToken,setDetaliiPacient,detaliiPacient}:PacientiProps)=>{
     const [isAddModalVisible,setIsAddModalVisible]=useState(false);
-    useEffect(() => {
-        getPacienti();
-      },[]);
+   //getPacienti()
     return(
         <>
         <div style={{display:"flex", marginLeft:"100px"}}>

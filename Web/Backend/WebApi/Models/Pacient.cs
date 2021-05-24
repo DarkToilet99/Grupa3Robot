@@ -7,7 +7,7 @@ namespace WebApi.Models
     {
         [Key]
         public int PacientId { get; set; }
-        public int PacientCNP { get; set; }
+        public long PacientCNP { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public int Varsta { get; set; }

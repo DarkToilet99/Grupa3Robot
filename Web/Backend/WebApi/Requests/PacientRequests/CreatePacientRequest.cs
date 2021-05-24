@@ -17,8 +17,8 @@ namespace WebApi.Requests.PacientRequests
         [Required(AllowEmptyStrings = false)]
         public string Prenume { get; set; }
         [Required]
-        [Range(0, int.MaxValue)]
-        public int PacientCNP { get; set; }
+        [Range(0, long.MaxValue)]
+        public long PacientCNP { get; set; }
         [Required]
         [Range(0, int.MaxValue)]
         public int Varsta { get; set; }

@@ -14,7 +14,7 @@ export const DetaliiPacient=({dataPacient}:DetaliiPacientProps)=>{
     const [k,setK]=useState(0);
     const [tratament,setTratament]=useState({medicament:"",diagnostic:"",pat:0,pacientId:0});
     
-    if(k<3)
+    if(k<3&& tratament.pat==0)
         {axios
         .get("https://localhost:44327/pacient",{params:{pacientId:dataPacient.pacientId}})
         .then(raspuns=>{
@@ -23,13 +23,13 @@ export const DetaliiPacient=({dataPacient}:DetaliiPacientProps)=>{
             setTratament({diagnostic:tratament_temporal.diagnostic,medicament:tratament_temporal.medicament,pat:tratament_temporal.pat,pacientId:dataPacient.pacientId})
             setK(k+1);
         })
-        .catch(e=>console.log(e))
-        console.log(k)
-    console.log(tratament)}
+        .catch(e=>console.log(e))}
+    console.log(tratament)
 let sexPacient;
-if(dataPacient.sex===true)
+if(dataPacient.sex.toString()==="true" || dataPacient.sex.toString()==="masculin")
 sexPacient="Masculin"
 else
+if(dataPacient.sex.toString()=="false" || dataPacient.sex.toString()==="feminin")
 sexPacient="Feminin"
     return(
         <div style={{width:"400px", marginLeft:"100px", marginTop:"40px",justifyItems:"center"}}>
