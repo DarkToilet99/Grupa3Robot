@@ -23,9 +23,10 @@
                 
                     <Button Text="fata" Clicked="Button_in_fata" Background="Pink"   Grid.Row="0" Grid.Column="1"></Button>
                     <Button Text="spate" Clicked="Button_spate" Background="Gray" Grid.Row="2" Grid.Column="1"></Button>
-                    <Button Text="Stanga" Clicked="Button_stanga" Background="Black"  Grid.Row="1" Grid.Column="0"></Button>
+                    <Button Text="Stanga" Clicked="Button_stanga" Background="Black" TextColor="White"  Grid.Row="1" Grid.Column="0"></Button>
+                    <Button Text="Stop" Clicked="Button_stop" Background="Red"  Grid.Row="1" Grid.Column="1"></Button>
                     <Button Text="Dreapta" Clicked="Button_dreapta" Background="Blue"  Grid.Row="1" Grid.Column="2"></Button>
-                
+
             </Grid>
             <Grid HeightRequest="15"></Grid>
   

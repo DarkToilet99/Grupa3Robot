@@ -30,8 +30,7 @@ namespace Mobile
 
         private async void Button_Control_manual(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Controlmanual());
-
+           // await Navigation.PushAsync(new Controlmanual());
         }
 
         private async void Button_Rapoarte(object sender, EventArgs e)

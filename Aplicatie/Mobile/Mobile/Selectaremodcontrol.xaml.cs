@@ -24,7 +24,7 @@ namespace Mobile
             {
                 await DisplayAlert("", "Ati selectat controlul manual", "OK");
                 
-                await Navigation.PushAsync(new Controlmanual());
+                await Navigation.PushAsync(new SelectDevices());
             }
             if (controlautomat.IsChecked)
             {
