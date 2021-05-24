@@ -78,9 +78,10 @@ const stergerePacient=()=>{
   }
 
 const navigateToPacienti =()=>{
-    setHeaderVisible(false);
     setScreens(Screens.Pacienti);
     setBackButtonVisible(false);
+    getPacienti()
+    setHeaderTitle("Pacienti");
 }
 
 const navigateToRegister=()=>{
@@ -99,6 +100,8 @@ const navigateToAutentificare=()=>{
 
 const navigateToIstoricPacient=async ()=>{
     setScreens(Screens.IstoricPacient);
+    setHeaderTitle("Detalii Pacient");
+    
 }
 const DatePacienti=()=>{
     console.log(searchCriteria);

@@ -9,7 +9,7 @@ namespace WebApi.Requests.PacientRequests
     public class DeletePacientRequest
     {
         [Required]
-        [Range(0, int.MaxValue)]
-        public int PacientCNP { get; set; }
+        [Range(0, long.MaxValue)]
+        public long PacientCNP { get; set; }
     }
 }
